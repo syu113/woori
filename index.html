@@ -82,7 +82,7 @@
 
         body {
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             background-color: #f5f5f5;
@@ -91,8 +91,8 @@
         }
 
         .container {
-            width: 100%;
-            max-width: var(--max-width);
+            width: 398px;
+            max-width: 398px;
             background: white;
             display: flex;
             flex-direction: column;
@@ -635,18 +635,213 @@
             font-family: 'Altesse Std', cursive;
         }
 
-        /* Desktop tweaks */
+        /* Desktop tweaks - Keep mobile size on desktop */
         @media (min-width: 640px) {
             body {
-                padding: 28px;
+                padding: 20px;
             }
 
             .container {
-                border-radius: 18px;
+                width: 398px;
+                max-width: 398px;
+            }
+
+            /* Override all clamp() with vw to use fixed mobile values */
+            .hero-image-placeholder {
+                padding: 24px;
+                padding-top: 60px;
+                gap: 8px;
+            }
+
+            .names-row {
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+
+            .name-text {
+                font-size: 15px;
+            }
+
+            .ampersand {
+                font-size: 18px;
+            }
+
+            .main-title {
+                font-size: 52px;
+                margin-bottom: 12px;
+            }
+
+            .invitation-text {
+                font-size: 14px;
+            }
+
+            .date-text {
+                font-size: 16px;
+            }
+
+            .hero-date {
+                bottom: 20px;
+            }
+
+            .wax-seal {
+                width: 60px;
+                height: 60px;
+                margin: 20px 0;
+            }
+
+            .wax-seal::before {
+                font-size: 32px;
+            }
+
+            .video-box {
+                padding: 12px;
+            }
+
+            .video-label {
+                font-size: 14px;
+            }
+
+            .calendar-section {
+                padding: 0 16px;
+            }
+
+            .day-header {
+                gap: 6px;
+                margin-bottom: 18px;
+            }
+
+            .week-row {
+                gap: 6px;
+                margin-bottom: 14px;
+            }
+
+            .day-cell {
+                font-size: 13px;
+            }
+
+            .day-cell.highlight::before {
+                width: 38px;
+                height: 34px;
+            }
+
+            .section-wedding-day {
+                gap: 18px;
+                margin: 32px 0;
+                padding: 0 18px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .datetime-main {
+                font-size: 15px;
+            }
+
+            .datetime-sub {
+                font-size: 13px;
+            }
+
+            .dear-bg {
+                gap: 20px;
+                padding: 32px;
+            }
+
+            .dear-title {
+                font-size: 36px;
+                margin: 32px 0 12px 0;
+            }
+
+            .divider-line {
+                width: 40px;
+                margin: 0 auto 20px;
+            }
+
+            .invitation-body {
+                gap: 20px;
+                font-size: 18px;
+            }
+
+            .parents-area {
+                gap: 14px;
+                padding: 0 22px;
+            }
+
+            .parents-row {
+                font-size: 16px;
+            }
+
+            .gallery-container {
+                padding: 48px 16px 0;
+                gap: 12px;
+            }
+
+            .gallery-grid {
+                gap: 8px;
+                margin-top: 26px;
+            }
+
+            .gallery-row {
+                gap: 8px;
+            }
+
+            .gallery-item {
+                font-size: 13px;
+            }
+
+            .more-btn {
+                margin: 28px 0;
+            }
+
+            .location-section {
+                gap: 30px;
+                margin-top: 50px;
+                padding: 0 18px;
+            }
+
+            .map-placeholder {
+                height: 200px;
             }
 
             .map-buttons {
-                justify-content: space-between;
+                padding: 16px;
+            }
+
+            .map-btn {
+                font-size: 11px;
+            }
+
+            .accounts-section {
+                padding: 60px 20px 60px;
+                gap: 40px;
+            }
+
+            .account-group {
+                gap: 18px;
+            }
+
+            .account-header {
+                padding: 0 12px;
+                font-size: 17px;
+            }
+
+            .account-row {
+                padding: 0 12px;
+                font-size: 15px;
+            }
+
+            .footer-section {
+                gap: 14px;
+                margin: 44px 0 70px 0;
+                padding: 0 16px;
+            }
+
+            .footer-msg {
+                font-size: 15px;
+            }
+
+            .design-by {
+                font-size: 22px;
             }
         }
     </style>
