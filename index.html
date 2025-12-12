@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
 
     <style>
         /* Font Definitions */
@@ -110,7 +111,7 @@
 
         /* Typography helpers */
         .font-altesse {
-            font-family: 'Altesse Std', cursive;
+            font-family: 'Pinyon Script', cursive;
         }
 
         .font-sometimes {
@@ -164,7 +165,7 @@
 
         .main-title {
             font-size: clamp(52px, 13vw, 76px);
-            font-family: 'Altesse Std', cursive;
+            font-family: 'Pinyon Script', cursive;
             line-height: 1;
             margin-bottom: clamp(12px, 3vw, 20px);
             text-align: center;
@@ -207,7 +208,7 @@
 
         .wax-seal::before {
             content: 'A';
-            font-family: 'Altesse Std', cursive;
+            font-family: 'Pinyon Script', cursive;
             font-size: clamp(32px, 8vw, 48px);
             color: rgba(255, 255, 255, 0.9);
             font-weight: bold;
@@ -220,19 +221,32 @@
             aspect-ratio: 390 / 342;
             position: relative;
             padding: clamp(12px, 3vw, 16px);
-            background: black;
         }
 
         .video-bg-black {
             position: absolute;
-            inset: 0;
-            background: 53514D;
+            inset: clamp(6px, 2vw, 10px);
+            background: #53514D;
+            z-index: 2;
         }
 
         .video-bg-gray {
             position: absolute;
-            inset: clamp(6px, 2vw, 10px);
+            inset: 0;
+            background: #53514D url('./image/2.png') center/cover no-repeat;
+            z-index: 1;
+        }
+
+        .video-inner-box {
+            position: absolute;
+            width: 390px;
+            height: 270px;
             background: #53514D;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            width: calc(100% - 10px);
+            z-index: 2;
         }
 
         .video-label {
@@ -244,6 +258,7 @@
             color: white;
             font-size: clamp(14px, 3.6vw, 18px);
             font-weight: 500;
+            z-index: 3;
         }
 
         /* SPACERS */
@@ -278,7 +293,7 @@
             padding: 0 clamp(16px, 6vw, 24px);
         }
 
-        .calendar-section > .calendar-highlight {
+        .calendar-section>.calendar-highlight {
             position: absolute;
             width: clamp(38px, 10vw, 52px);
             height: clamp(34px, 9vw, 46px);
@@ -374,52 +389,141 @@
             box-shadow: 0 4px 27px rgba(0, 0, 0, 0.15);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            gap: clamp(20px, 5vw, 32px);
-            padding: clamp(32px, 8vw, 48px);
+            gap: 20px;
+            padding: 32px;
             box-sizing: border-box;
         }
 
         .dear-title {
-            font-size: clamp(36px, 10vw, 48px);
-            font-family: 'Altesse Std', cursive;
-            margin: clamp(32px, 10vw, 56px) 0 clamp(12px, 3vw, 18px) 0;
+            font-size: 50px;
+            font-family: 'Pinyon Script', cursive;
+            line-height: 1;
+            margin: 40px 0 0 0;
             text-align: center;
         }
 
         .divider-line {
-            width: clamp(40px, 12vw, 60px);
+            width: 100%;
+            max-width: 310px;
             height: 1px;
             background: var(--color-dark);
-            margin: 0 auto clamp(20px, 5vw, 28px);
+            margin: 0 auto;
+            opacity: 0.3;
         }
 
         .invitation-body {
             display: flex;
             flex-direction: column;
-            gap: clamp(20px, 5vw, 28px);
+            gap: 0;
             text-align: center;
-            font-size: clamp(18px, 4.5vw, 18px);
-            line-height: 1.9;
+            font-size: 18px;
+            line-height: 1.6;
             margin-bottom: 0;
-            --padding: 0 clamp(22px, 7vw, 36px);
+            padding: 0 22px;
+            width: 354px;
+            max-width: 354px;
+            min-width: 354px;
+            box-sizing: border-box;
+            word-break: keep-all;
+            overflow-wrap: normal;
+        }
+
+        .text-group-1,
+        .text-group-2 {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .text-group-1>div,
+        .text-group-2>div {
+            width: 100%;
+            box-sizing: border-box;
+            white-space: nowrap;
+            word-break: keep-all;
+            line-height: 1.6;
+            overflow: visible;
+            margin-bottom: 6px;
+            padding: 0;
+        }
+
+        .text-group-1 {
+            margin-bottom: 0;
+        }
+
+        .text-group-1>div:nth-child(2) {
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .text-group-2 {
+            margin-top: 0;
+            margin-bottom: 6px;
+        }
+
+        .text-group-2>div:nth-child(1) {
+            margin-bottom: 6px;
+        }
+
+        .text-group-2>div:nth-child(2) {
+            margin-top: 0;
+            margin-bottom: 6px;
+        }
+
+        .text-group-2>div:nth-child(3),
+        .text-group-2>div:nth-child(4) {
+            margin-top: 0;
+            margin-bottom: 6px;
+        }
+
+        .parent-group-1,
+        .parent-group-2 {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .parent-group-1 {
+            margin-bottom: 0;
+        }
+
+        .parent-group-2 {
+            margin-top: 0;
         }
 
         .parents-area {
             display: flex;
             flex-direction: column;
-            gap: clamp(14px, 5vw, 22px);
-            width: 100%;
-            padding: 0 clamp(22px, 8vw, 52px);
+            gap: 0;
+            width: 354px;
+            max-width: 354px;
+            min-width: 354px;
+            padding: 0 22px;
+            margin-top: 50px;
+            box-sizing: border-box;
         }
 
         .parents-row {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            font-size: clamp(16px, 4.4vw, 19px);
+            font-size: 16px;
             gap: 12px;
+            flex-wrap: nowrap;
+            box-sizing: border-box;
+        }
+
+        .parents-row .label {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .parents-row .name {
+            flex-shrink: 0;
+            white-space: nowrap;
         }
 
         .parents-row .label {
@@ -632,7 +736,7 @@
         .design-by {
             font-size: clamp(22px, 6vw, 28px);
             color: #A19A82;
-            font-family: 'Altesse Std', cursive;
+            font-family: 'Pinyon Script', cursive;
         }
 
         /* Desktop tweaks - Keep mobile size on desktop */
@@ -753,22 +857,71 @@
             }
 
             .divider-line {
-                width: 40px;
-                margin: 0 auto 20px;
+                width: 100%;
+                max-width: 310px;
+                height: 1px;
+                background: var(--color-dark);
+                margin: 0 auto;
+                opacity: 0.3;
             }
 
             .invitation-body {
-                gap: 20px;
+                gap: 0;
                 font-size: 18px;
+                line-height: 1.6;
+                width: 354px;
+                max-width: 354px;
+                min-width: 354px;
+                padding: 0 22px;
+            }
+
+            .text-group-1,
+            .text-group-2 {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .text-group-1>div,
+            .text-group-2>div {
+                white-space: nowrap;
+                line-height: 1.6;
+            }
+
+            .text-group-1>div:nth-child(2) {
+                margin-bottom: 26px;
+            }
+
+            .text-group-2>div:nth-child(2) {
+                margin-bottom: 26px;
+            }
+
+            .parent-group-1,
+            .parent-group-2 {
+                display: flex;
+                flex-direction: column;
             }
 
             .parents-area {
                 gap: 14px;
                 padding: 0 22px;
+                width: 354px;
+                max-width: 354px;
+                min-width: 354px;
             }
 
             .parents-row {
                 font-size: 16px;
+                flex-wrap: nowrap;
+            }
+
+            .parents-row .label {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+
+            .parents-row .name {
+                flex-shrink: 0;
+                white-space: nowrap;
             }
 
             .gallery-container {
@@ -876,7 +1029,8 @@
 
         <!-- MAIN VIDEO -->
         <div class="video-box">
-            <div class="video-bg-black"></div>
+            <div class="video-bg-gray"></div>
+            <div class="video-inner-box"></div>
             <div class="video-label">영상</div>
         </div>
 
@@ -884,26 +1038,38 @@
         <div class="dear-bg">
 
             <div class="dear-title">Dear.</div>
-            <div class="divider-line"></div>
+            <div class="divider-line" style="margin: -12px auto 20px; width:35%;"></div><br />
 
             <div class="invitation-body">
-                <div>하나님의 은혜 안에서 저희 두 사람이<br>서로에게 귀한 반려자로 서게 되었습니다.</div>
-                <div>기도와 사랑으로 여기까지 인도해 주신<br>모든 분들께 감사드리며,<br>저희의 시작도 함께 기뻐해 주신다면<br>큰 축복이 될 것입니다.</div>
+                <div class="text-group-1">
+                    <div>하나님의 은혜 안에서 저희 두 사람이</div>
+                    <div>서로에게 귀한 반려자로 서게 되었습니다.</div>
+                </div>
+                <div class="text-group-2">
+                    <div>기도와 사랑으로 여기까지 인도해 주신</div>
+                    <div>모든 분들께 감사드리며,</div>
+                    <div>저희의 시작도 함께 기뻐해 주신다면</div>
+                    <div>큰 축복이 될 것입니다.</div>
+                </div>
             </div>
-
-            <div class="divider-line"></div>
 
             <div class="parents-area">
-                <div class="parents-row">
-                    <div class="label">임석기 · 이미혜의 아들</div>
-                    <div class="name">임승준</div>
+                <div class="parent-group-1">
+                    <div class="parents-row">
+                        <div class="label">임석기 • 이미혜의 아들</div>
+                        <div class="name">임승준</div>
+                    </div>
+                    <div class="divider-line" style="margin: 14px auto;"></div>
                 </div>
-                <div class="parents-row">
-                    <div class="label">故이종석 · 염혜신의 딸</div>
-                    <div class="name">이하은</div>
+                <div class="parent-group-2">
+                    <div class="parents-row">
+                        <div class="label">故이종석 • 염혜신의 딸</div>
+                        <div class="name">이하은</div>
+                    </div>
+                    <div class="divider-line" style="margin: 14px auto 0;"></div>
                 </div>
             </div>
-        </div> 
+        </div>
 
         <!-- SUMMARY -->
         <div class="section-wedding-day">
@@ -978,7 +1144,7 @@
 
         <div class="gray-box-sm">
             <div class="text-center video-label-dark">영상</div>
-        </div> 
+        </div>
 
         <!-- GALLERY -->
         <div class="gallery-container">
