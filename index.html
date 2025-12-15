@@ -239,7 +239,7 @@
         .video-inner-box {
             position: absolute;
             width: 390px;
-            height: 270px;
+            height: 84%;
             background: #53514D;
             top: 5px;
             left: 5px;
@@ -269,14 +269,29 @@
 
         .gray-box-sm {
             width: 100%;
-            min-height: clamp(220px, 65vw, 446px);
-            background: var(--color-gray);
+            height: 500px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gray-box-sm img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 5%;
+            left: 0;
         }
 
         .video-label-dark {
             padding: clamp(16px, 4vw, 24px) 0;
             font-size: clamp(14px, 3.6vw, 18px);
             font-weight: 500;
+            position: relative;
+            z-index: 1;
         }
 
         /* CALENDAR */
@@ -286,7 +301,6 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 18px;
             margin: 0 auto 50px;
             position: relative;
             padding: 0 clamp(16px, 6vw, 24px);
@@ -336,7 +350,7 @@
             width: clamp(38px, 10vw, 52px);
             height: clamp(34px, 9vw, 46px);
             background: url('./image/4.png') center/contain no-repeat;
-            top: 50%;
+            top: 56%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: -1;
@@ -417,10 +431,9 @@
             flex-direction: column;
             gap: 0;
             text-align: center;
-            font-size: 18px;
+            font-size: 20px;
             line-height: 1.6;
             margin-bottom: 0;
-            padding: 0 22px;
             width: 354px;
             max-width: 354px;
             min-width: 354px;
@@ -509,7 +522,7 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
-            font-size: 16px;
+            font-size: 20px;
             gap: 12px;
             flex-wrap: nowrap;
             box-sizing: border-box;
@@ -738,6 +751,62 @@
             font-family: 'Pinyon Script', cursive;
         }
 
+        /* COUNTDOWN TIMER */
+        .countdown-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: clamp(40px, 10vw, 60px) clamp(20px, 6vw, 40px);
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: clamp(8px, 2vw, 12px);
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: clamp(20px, 5vw, 30px);
+        }
+
+        .countdown-box {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            padding: clamp(16px, 4vw, 24px) clamp(8px, 2vw, 12px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: clamp(80px, 20vw, 120px);
+        }
+
+        .countdown-number {
+            font-size: clamp(28px, 7vw, 40px);
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .countdown-label {
+            font-size: clamp(10px, 2.5vw, 12px);
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .countdown-text {
+            font-size: clamp(14px, 3.5vw, 16px);
+            color: #333;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .countdown-text .highlight {
+            color: #999;
+        }
+
         /* Desktop tweaks - Keep mobile size on desktop */
         @media (min-width: 640px) {
             body {
@@ -909,7 +978,7 @@
             }
 
             .parents-row {
-                font-size: 16px;
+                font-size: 20px;
                 flex-wrap: nowrap;
             }
 
@@ -1070,6 +1139,10 @@
             </div>
         </div>
 
+        <div class="gray-box-sm">
+            <img src="./image/avi.gif" alt="Animation">
+        </div>
+
         <!-- SUMMARY -->
         <div class="section-wedding-day">
             <div class="section-title">Wedding day</div>
@@ -1141,8 +1214,30 @@
             </div>
         </div>
 
-        <div class="gray-box-sm">
-            <div class="text-center video-label-dark">영상</div>
+
+        <!-- COUNTDOWN TIMER -->
+        <div class="countdown-section">
+            <div class="countdown-timer">
+                <div class="countdown-box">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">DAYS</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">HOURS</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">MINUTES</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">SECONDS</div>
+                </div>
+            </div>
+            <div class="countdown-text">
+                승준<span style="color: #333;">♥</span>하은 결혼식이 <span class="highlight" id="days-text">0일</span> <span id="countdown-status">남았습니다</span>
+            </div>
         </div>
 
         <!-- GALLERY -->
@@ -1284,6 +1379,52 @@
         </div>
 
     </div>
+
+    <script>
+        // 결혼식 날짜: 2026년 3월 28일 오후 2시
+        const weddingDate = new Date('2026-03-28T14:00:00');
+        
+        function updateCountdown() {
+            const now = new Date();
+            const timeDiff = weddingDate - now; // 결혼식까지 남은 시간 (음수면 이미 지남)
+            
+            let days, hours, minutes, seconds;
+            let statusText;
+            
+            if (timeDiff > 0) {
+                // 결혼식 이전: 카운트다운
+                days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                statusText = '남았습니다';
+            } else {
+                // 결혼식 이후: 경과 시간
+                const elapsedTime = now - weddingDate;
+                days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
+                hours = Math.floor((elapsedTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+                seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+                statusText = '지났습니다';
+            }
+            
+            // 숫자 표시 (2자리로)
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            
+            // 한국어 텍스트 업데이트
+            document.getElementById('days-text').textContent = days + '일';
+            document.getElementById('countdown-status').textContent = statusText;
+        }
+        
+        // 초기 실행
+        updateCountdown();
+        
+        // 1초마다 업데이트
+        setInterval(updateCountdown, 1000);
+    </script>
 
 </body>
 
