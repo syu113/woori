@@ -10,8 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
-    <!-- 네이버 지도 API: ncpKeyId를 네이버 클라우드 플랫폼에서 발급받은 키 ID로 변경하세요 -->
+    <!-- 네이버 지도 API: X-NCP-APIGW-API-KEY-ID (클라이언트 ID)를 네이버 클라우드 플랫폼에서 발급받아 입력하세요 -->
     <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=rsg3odfsp8"></script>
+    
     <style>
         /* Font Definitions */
         @font-face {
@@ -1429,6 +1430,8 @@
         // 1초마다 업데이트
         setInterval(updateCountdown, 1000);
     </script>
+
+    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=rsg3odfsp8&callback=initMap"></script>
 
     <script>
         // 네이버 지도 초기화
