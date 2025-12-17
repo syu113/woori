@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
-
+    <!-- 네이버 지도 API: ncpKeyId를 네이버 클라우드 플랫폼에서 발급받은 키 ID로 변경하세요 -->
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=rsg3odfsp8"></script>
     <style>
         /* Font Definitions */
         @font-face {
@@ -629,8 +630,14 @@
         .map-placeholder {
             width: 100%;
             height: clamp(200px, 55vw, 320px);
-            background: var(--color-gray);
             border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .map-iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         .map-buttons {
@@ -1083,15 +1090,18 @@
         <!-- INTRO -->
         <div class="hero-image-placeholder">
             <video class="hero-video" autoplay muted loop playsinline>
-                <source src="./image/11.mp4" type="video/mp4">
+                <source src="./mp4/1.mp4" type="video/mp4">
             </video>
         </div>
 
         <!-- MAIN VIDEO -->
         <div class="video-box">
             <div class="video-bg-gray"></div>
-            <div class="video-inner-box"></div>
-            <div class="video-label">영상</div>
+            <div class="video-inner-box">
+                <video class="hero-video" autoplay muted loop playsinline>
+                    <source src="./mp4/2.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
 
         <!-- DEAR SECTION -->
@@ -1284,7 +1294,9 @@
             </div>
 
             <div style="width:100%;">
-                <div class="map-placeholder"></div>
+                <div class="map-placeholder">
+                    <div id="naver-map" style="width:100%;height:100%;"></div>
+                </div>
                 <div class="map-buttons">
                     <div class="map-btn">
                         <div class="map-icon kakao"></div>
@@ -1416,6 +1428,62 @@
         
         // 1초마다 업데이트
         setInterval(updateCountdown, 1000);
+    </script>
+
+    <script>
+        // 네이버 지도 초기화
+        function initMap() {
+            const mapDiv = document.getElementById('naver-map');
+            if (!mapDiv) {
+                console.error('지도 컨테이너를 찾을 수 없습니다');
+                return;
+            }
+
+            // 주소: 경기 성남시 분당구 안양판교로 1219
+            // 직접 좌표 사용 (위도, 경도)
+            const point = new naver.maps.LatLng(37.3950, 127.1110);
+            createMap(mapDiv, point);
+        }
+
+        function createMap(mapDiv, point) {
+            // 지도 생성
+            const map = new naver.maps.Map(mapDiv, {
+                center: point,
+                zoom: 16,
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: naver.maps.Position.TOP_RIGHT
+                }
+            });
+
+            // 마커 추가
+            const marker = new naver.maps.Marker({
+                position: point,
+                map: map
+            });
+
+            // 정보창 추가
+            const infoWindow = new naver.maps.InfoWindow({
+                content: '<div style="padding:10px;font-size:14px;text-align:center;">우리들교회 판교채플<br>8층 탄설홀</div>'
+            });
+
+            naver.maps.Event.addListener(marker, 'click', function() {
+                if (infoWindow.getMap()) {
+                    infoWindow.close();
+                } else {
+                    infoWindow.open(map, marker);
+                }
+            });
+        }
+
+        // 페이지 로드 후 지도 초기화
+        window.addEventListener('load', function() {
+            if (typeof naver !== 'undefined' && naver.maps) {
+                initMap();
+            } else {
+                console.error('네이버 지도 API가 로드되지 않았습니다. 클라이언트 ID를 확인하세요.');
+            }
+        });
     </script>
 
 </body>
