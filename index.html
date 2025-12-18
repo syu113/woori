@@ -18,7 +18,7 @@
     <meta property="og:title" content="Wedding Invitaion" />
     <meta property="og:description" content="© 승준 ♥ 하은" />
     <meta property="og:url" content="https://www.dear-beloved.my" />
-    <meta property="og:image" content="https://www.dear-beloved.my/image/3.png" />
+    <meta property="og:image" content="https://www.dear-beloved.my/image/dear.png" />
 
     <!-- 카카오톡 필수 -->
     <meta property="og:site_name" content="Dear Beloved" />
@@ -573,6 +573,63 @@
 
         .parents-row .name {
             font-weight: 700;
+        }
+
+        /* TIMELINE SECTION */
+        .timeline-section {
+            position: relative;
+            width: 100%;
+            min-height: clamp(500px, 120vw, 900px);
+            margin: clamp(50px, 12vw, 70px) 0;
+        }
+
+        .timeline-bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .timeline-bg-1 {
+            z-index: 1;
+            background-image: url('./image/17.jpg');
+        }
+
+        .timeline-bg-2 {
+            z-index: 2;
+            background-image: url('./image/18.png');
+        }
+
+        .timeline-image {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            background-size: contain;
+            background-position: center top;
+            background-repeat: no-repeat;
+            z-index: 3;
+        }
+
+        .timeline-img-1 {
+            top: 0;
+            background-image: url('./image/14.png');
+            min-height: clamp(150px, 35vw, 250px);
+        }
+
+        .timeline-img-2 {
+            top: clamp(150px, 35vw, 250px);
+            background-image: url('./image/15.png');
+            min-height: clamp(150px, 35vw, 250px);
+        }
+
+        .timeline-img-3 {
+            top: clamp(300px, 70vw, 500px);
+            background-image: url('./image/16.png');
+            min-height: clamp(150px, 35vw, 250px);
         }
 
         /* GALLERY */
@@ -1266,6 +1323,15 @@
             <div class="countdown-text">
                 승준 <span style="color: #333;">♥</span> 하은 결혼식이 <span class="highlight" id="days-text">0일</span> <span id="countdown-status">남았습니다</span>
             </div>
+        </div>
+
+        <!-- TIMELINE SECTION -->
+        <div data-layer="Frame 44" class="Frame44" style="width: 100%; height: clamp(600px, 190vw, 759px); position: relative">
+            <img data-layer="제목-없음-1 5" class="15" style="width: 100%; height: 759px; left: 0px; top: 0px; position: absolute" src="./image/17.jpg" />
+            <img data-layer="그룹 2 1" class="21" style="width: 100%; height: 604px; left: 0px; top: 46.48px; position: absolute" src="./image/18.png"" />
+            <img data-layer="19.12.15 우연처럼 시작된 인연_" class="1215" style="width: 94.51px; height: 33.58px; left: 270.74px; top: 134.63px; position: absolute" src="./image/14.png"/>
+            <img data-layer="6년의 시간을 지나 익숙함 속에서도 서로를 선택하는 법을 배워갑니다_" style="width: 132.23px; height: 52.23px; left: 38.18px; top: 236.64px; position: absolute" src="./image/15.png"/>
+            <img data-layer="26.03.28 이제는 평생을 약속하려 합니다_" class="0328" style="width: 70.88px; height: 49.33px; left: 62.53px; top: 653.82px; position: absolute" src="./image/16.png"/>
         </div>
 
         <!-- GALLERY -->
