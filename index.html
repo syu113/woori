@@ -749,13 +749,11 @@
 
         .lightbox-nav {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            bottom: 115px;
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.2);
+            background: transparent;
             border: none;
-            border-radius: 50%;
             color: white;
             font-size: 24px;
             cursor: pointer;
@@ -763,30 +761,30 @@
             align-items: center;
             justify-content: center;
             z-index: 10001;
-            transition: background 0.3s;
         }
 
         .lightbox-nav:hover {
-            background: rgba(255, 255, 255, 0.3);
+            opacity: 0.7;
         }
 
         .lightbox-nav.prev {
-            left: 20px;
+            left: calc(50% - 50px);
+            transform: translateX(-50%);
         }
 
         .lightbox-nav.next {
-            right: 20px;
+            right: calc(50% - 50px);
+            transform: translateX(50%);
         }
 
         .lightbox-counter {
             position: absolute;
-            bottom: 0px;
+            bottom: 120px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
             font-size: 16px;
             z-index: 10001;
-            background: rgba(0, 0, 0, 0.5);
             padding: 8px 16px;
             border-radius: 20px;
         }
@@ -1347,6 +1345,14 @@
 
             .design-by {
                 font-size: 22px;
+            }
+
+            .lightbox-counter {
+                bottom: 0px;
+            }
+
+            .lightbox-nav {
+                bottom: -4px;
             }
         }
     </style>
@@ -1973,6 +1979,10 @@
             document.body.appendChild(lightbox);
 
             let currentIndex = 0;
+            let startX = 0;
+            let startY = 0;
+            let isDragging = false;
+            let hasMoved = false;
 
             // 이미지 업데이트 함수
             function updateImage(index) {
@@ -1980,10 +1990,6 @@
                 currentIndex = index;
                 lightboxImage.src = galleryImages[currentIndex].url;
                 counter.textContent = (currentIndex + 1) + ' / ' + galleryImages.length;
-                
-                // 첫 번째/마지막 이미지일 때 화살표 숨기기
-                prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
-                nextBtn.style.display = currentIndex === galleryImages.length - 1 ? 'none' : 'flex';
             }
 
             // 라이트박스 열기 함수
@@ -2001,16 +2007,22 @@
                 document.body.style.overflow = ''; // 스크롤 복원
             }
 
-            // 이전 이미지
+            // 이전 이미지 (순환)
             function showPrev() {
-                if (currentIndex > 0) {
+                if (currentIndex === 0) {
+                    // 첫 번째 이미지일 때 마지막 이미지로 이동
+                    updateImage(galleryImages.length - 1);
+                } else {
                     updateImage(currentIndex - 1);
                 }
             }
 
-            // 다음 이미지
+            // 다음 이미지 (순환)
             function showNext() {
-                if (currentIndex < galleryImages.length - 1) {
+                if (currentIndex === galleryImages.length - 1) {
+                    // 마지막 이미지일 때 첫 번째 이미지로 이동
+                    updateImage(0);
+                } else {
                     updateImage(currentIndex + 1);
                 }
             }
@@ -2062,6 +2074,113 @@
                     showPrev();
                 } else if (e.key === 'ArrowRight') {
                     showNext();
+                }
+            });
+
+            // 드래그/스와이프로 이미지 넘기기 (마우스)
+            lightboxImage.addEventListener('mousedown', function(e) {
+                if (!lightbox.classList.contains('show')) return;
+                isDragging = true;
+                hasMoved = false;
+                startX = e.clientX;
+                startY = e.clientY;
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging || !lightbox.classList.contains('show')) return;
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                // 수평 이동이 수직 이동보다 크면 드래그로 간주
+                if (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10) {
+                    hasMoved = true;
+                }
+            });
+
+            document.addEventListener('mouseup', function(e) {
+                if (!isDragging || !lightbox.classList.contains('show')) return;
+                isDragging = false;
+                
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                // 수평 이동이 수직 이동보다 크고, 최소 50px 이상 이동했을 때
+                if (hasMoved && Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+                    if (deltaX > 0) {
+                        // 오른쪽으로 드래그 -> 이전 이미지
+                        showPrev();
+                    } else {
+                        // 왼쪽으로 드래그 -> 다음 이미지
+                        showNext();
+                    }
+                } else if (!hasMoved) {
+                    // 드래그가 아닌 클릭인 경우
+                    // 이미지의 왼쪽 절반 클릭 -> 이전, 오른쪽 절반 클릭 -> 다음
+                    const rect = lightboxImage.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const imageWidth = rect.width;
+                    
+                    if (clickX < imageWidth / 2) {
+                        showPrev();
+                    } else {
+                        showNext();
+                    }
+                }
+            });
+
+            // 드래그/스와이프로 이미지 넘기기 (터치)
+            lightboxImage.addEventListener('touchstart', function(e) {
+                if (!lightbox.classList.contains('show')) return;
+                isDragging = true;
+                hasMoved = false;
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                e.preventDefault();
+            });
+
+            lightboxImage.addEventListener('touchmove', function(e) {
+                if (!isDragging || !lightbox.classList.contains('show')) return;
+                const touch = e.touches[0];
+                const deltaX = touch.clientX - startX;
+                const deltaY = touch.clientY - startY;
+                
+                // 수평 이동이 수직 이동보다 크면 드래그로 간주
+                if (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10) {
+                    hasMoved = true;
+                }
+            });
+
+            lightboxImage.addEventListener('touchend', function(e) {
+                if (!isDragging || !lightbox.classList.contains('show')) return;
+                isDragging = false;
+                
+                const touch = e.changedTouches[0];
+                const deltaX = touch.clientX - startX;
+                const deltaY = touch.clientY - startY;
+                
+                // 수평 이동이 수직 이동보다 크고, 최소 50px 이상 이동했을 때
+                if (hasMoved && Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+                    if (deltaX > 0) {
+                        // 오른쪽으로 스와이프 -> 이전 이미지
+                        showPrev();
+                    } else {
+                        // 왼쪽으로 스와이프 -> 다음 이미지
+                        showNext();
+                    }
+                } else if (!hasMoved) {
+                    // 스와이프가 아닌 탭인 경우
+                    // 이미지의 왼쪽 절반 탭 -> 이전, 오른쪽 절반 탭 -> 다음
+                    const rect = lightboxImage.getBoundingClientRect();
+                    const tapX = touch.clientX - rect.left;
+                    const imageWidth = rect.width;
+                    
+                    if (tapX < imageWidth / 2) {
+                        showPrev();
+                    } else {
+                        showNext();
+                    }
                 }
             });
         });
