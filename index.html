@@ -677,6 +677,14 @@
             width: 100%;
         }
 
+        .gallery-row:nth-child(n+3) {
+            display: none;
+        }
+
+        .gallery-row:nth-child(n+3).show {
+            display: flex !important;
+        }
+
         .gallery-item {
             flex: 1;
             aspect-ratio: 1 / 1;
@@ -710,7 +718,7 @@
             width: calc(100% + clamp(36px, 12vw, 64px));
             margin-left: calc(-1 * clamp(18px, 6vw, 32px));
             margin-right: calc(-1 * clamp(18px, 6vw, 32px));
-            min-height: clamp(270px, 67.5vw, 505px);
+            min-height: clamp(270px, 67.5vw, 310px);
             background: #F7F7F7;
             display: flex;
             flex-direction: column;
@@ -726,6 +734,7 @@
             margin-top: clamp(50px, 12vw, 70px);
             width: 100%;
             padding: 0 clamp(18px, 6vw, 32px);
+            margin-bottom: 10%;
         }
 
         .map-placeholder {
@@ -746,7 +755,7 @@
         .map-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 20px;
             justify-content: center;
             width: 100%;
             padding: clamp(16px, 5vw, 24px);
@@ -1393,7 +1402,7 @@
 
             <div class="more-btn">
                 <div class="arrow-up"
-                    style="width: 10px; height: 10px; border-left: 1px solid black; border-top: 1px solid black; transform: rotate(45deg); border-right:0; border-bottom:0;">
+                    style="width: 10px; height: 10px; border-left: 1px solid black; border-top: 1px solid black; transform: rotate(225deg); border-right:0; border-bottom:0;">
                 </div>
                 <div style="margin-top: 10px; font-weight: 500;">더보기</div>
             </div>
@@ -1593,6 +1602,86 @@
                 initMap();
             } else {
                 console.error('네이버 지도 API가 로드되지 않았습니다. 클라이언트 ID를 확인하세요.');
+            }
+        });
+
+        // 지도 버튼 클릭 이벤트
+        document.addEventListener('DOMContentLoaded', function() {
+            const address = encodeURIComponent('경기 성남시 분당구 안양판교로 1219');
+            
+            // 모든 지도 버튼 찾기
+            const mapButtons = document.querySelectorAll('.map-btn');
+            
+            mapButtons.forEach(function(btn) {
+                btn.style.cursor = 'pointer';
+                
+                // 카카오맵 버튼
+                if (btn.querySelector('.map-icon.kakao')) {
+                    btn.addEventListener('click', function() {
+                        window.open(`https://map.kakao.com/link/search/${address}`, '_blank');
+                    });
+                }
+                
+                // 네이버맵 버튼
+                if (btn.querySelector('.map-icon.naver')) {
+                    btn.addEventListener('click', function() {
+                        window.open(`https://map.naver.com/v5/search/${address}`, '_blank');
+                    });
+                }
+                
+                // 티맵 버튼
+                if (btn.querySelector('.map-icon.tmap')) {
+                    btn.addEventListener('click', function() {
+                        // 티맵: 모바일에서는 앱 링크 사용
+                        if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                            // 모바일: 티맵 앱 링크 (앱이 설치되어 있으면 앱이 열림)
+                            const tmapAppLink = `tmap://search?name=${address}`;
+                            window.location.href = tmapAppLink;
+                            
+                            // 앱이 없을 경우를 대비해 웹 검색으로 대체
+                            setTimeout(function() {
+                                window.open(`https://map.naver.com/v5/search/${address}`, '_blank');
+                            }, 1000);
+                        } else {
+                            // PC: 티맵은 모바일 전용이므로 네이버 지도로 대체
+                            window.open(`https://map.naver.com/v5/search/${address}`, '_blank');
+                        }
+                    });
+                }
+            });
+
+            // 갤러리 더보기 버튼
+            const moreBtn = document.querySelector('.more-btn');
+            const galleryRows = document.querySelectorAll('.gallery-row');
+            const arrowUp = document.querySelector('.arrow-up');
+            const moreBtnText = moreBtn.querySelector('div:last-child');
+            let isExpanded = false;
+
+            if (moreBtn) {
+                moreBtn.style.cursor = 'pointer';
+                moreBtn.addEventListener('click', function() {
+                    isExpanded = !isExpanded;
+                    
+                    // 3번째 row부터 보이기/숨기기
+                    galleryRows.forEach(function(row, index) {
+                        if (index >= 2) {
+                            if (isExpanded) {
+                                row.classList.add('show');
+                            } else {
+                                row.classList.remove('show');
+                            }
+                        }
+                    });
+
+                    // 화살표 방향 변경 및 텍스트 변경
+                    if (isExpanded) {
+                        arrowUp.style.transform = 'rotate(45deg)'; // 위로 향하는 화살표
+                        moreBtnText.textContent = '접기';
+                    } else {
+                        arrowUp.style.transform = 'rotate(225deg)'; // 아래로 향하는 화살표
+                        moreBtnText.textContent = '더보기';
+                    }
+                });
             }
         });
     </script>
