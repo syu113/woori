@@ -846,8 +846,7 @@
 
         /* FOOTER */
         .footer-section {
-            width: 100%;
-            max-width: 320px;
+            width: clamp(286px, 72vw, 320px);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -858,8 +857,7 @@
             background-size: 100% 100%;
             background-position: center;
             background-repeat: no-repeat;
-            height: clamp(410px, 60vw, 450px);
-            min-height: clamp(200px, 60vw, 400px);
+            height: clamp(435px, 109vw, 450px);
         }
 
         .thanks-box {
@@ -1182,6 +1180,8 @@
             }
 
             .footer-section {
+                width: 286px;
+                height: 435px;
                 gap: 14px;
                 margin: 44px 0 70px 0;
                 padding: 0 16px;
