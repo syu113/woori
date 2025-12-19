@@ -615,7 +615,7 @@
 
         .timeline-bg-1 {
             z-index: 1;
-            background-image: url('./image/17.jpg');
+            background-image: url('./image/17.png');
         }
 
         .timeline-bg-2 {
@@ -814,9 +814,34 @@
         }
 
         .account-header {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 8px;
             padding: 0 clamp(12px, 4vw, 18px);
             font-size: clamp(17px, 4.8vw, 19px);
-            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .account-arrow {
+            font-size: clamp(20px, 5vw, 24px);
+            transition: transform 0.3s ease;
+            margin-left: auto;
+            transform: scaleX(1.8);
+        }
+
+        .account-header-line {
+            height: 1px;
+            background: var(--color-dark);
+            opacity: 0.3;
+        }
+
+        .account-content {
+            display: block;
+        }
+
+        .account-content.hidden {
+            display: none;
         }
 
         .account-row {
@@ -827,11 +852,18 @@
             font-size: clamp(15px, 4.2vw, 17px);
             gap: 12px;
             flex-wrap: wrap;
+            border-bottom: 1px dotted rgba(0, 0, 0, 0.4);
+            padding-bottom: clamp(16px, 4vw, 24px);
+            margin-bottom: clamp(16px, 2vw, 22px);
+        }
+
+        .account-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
         }
 
         .account-name {
             min-width: 50px;
-            font-weight: 600;
         }
 
         .account-number {
@@ -1173,6 +1205,7 @@
 
             .account-group {
                 gap: 18px;
+                padding: 30px;
             }
 
             .account-header {
@@ -1183,6 +1216,7 @@
             .account-row {
                 padding: 0 12px;
                 font-size: 15px;
+                padding-bottom: 10px;
             }
 
             .footer-section {
@@ -1361,12 +1395,21 @@
 
         <!-- TIMELINE SECTION -->
         <div data-layer="Frame 44" class="Frame44" style="width: 100%; height: clamp(600px, 190vw, 759px); position: relative">
-            <img data-layer="제목-없음-1 5" class="15" style="width: 100%; height: clamp(600px, 190vw, 759px); left: 0px; top: 0px; position: absolute" src="./image/17.jpg" />
-            <img data-layer="그룹 2 1" class="21" style="width: 100%; height: clamp(476px, 79.6vw, 604px); left: 0px; top: clamp(37px, 6.1vw, 46.48px); position: absolute" src="./image/18.png"" />
-            <img data-layer="19.12.15 우연처럼 시작된 인연_" class="1215" style="width: clamp(74px, 24.2vw, 94.51px); height: clamp(26px, 4.4vw, 33.58px); left: clamp(213px, 69.4vw, 270.74px); top: clamp(106px, 17.7vw, 134.63px); position: absolute" src="./image/14.png"/>
-            <img data-layer="6년의 시간을 지나 익숙함 속에서도 서로를 선택하는 법을 배워갑니다_" style="width: clamp(104px, 33.9vw, 132.23px); height: clamp(41px, 6.9vw, 52.23px); left: clamp(30px, 9.8vw, 38.18px); top: clamp(186px, 31.2vw, 236.64px); position: absolute" src="./image/15.png"/>
-            <img data-layer="26.03.28 이제는 평생을 약속하려 합니다_" class="0328" style="width: clamp(56px, 18.2vw, 70.88px); height: clamp(39px, 6.5vw, 49.33px); left: clamp(49px, 16vw, 62.53px); top: clamp(515px, 86.1vw, 653.82px); position: absolute" src="./image/16.png"/>
-        </div>
+                <img data-layer="img 5" class="Img5" style="width: 390px; height: 788px; left: 0px; top: 60px; position: absolute" src="./image/17.png"">
+                <div data-layer="2019년 처음, 서로의 이름을 부르기 시작하며" style="width: clamp(260px, 85.3vw, 332.80px); height: clamp(60px, 20.5vw, 80px); left: clamp(24px, 8vw, 31.13px); top: clamp(80px, 26.4vw, 102.88px); position: absolute; text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word">2019년 처음,<br/>서로의 이름을 부르기 시작하며</div>
+                <div data-layer="6년의 시간을 지나 당연함 속에서도 손을 놓지 않게 되었고, 서로를 선택하는 법을 배웠습니다." style="width: clamp(260px, 85.3vw, 332.80px); height: clamp(60px, 20.5vw, 80px); left: clamp(24px, 8vw, 31.13px); top: clamp(158px, 51.8vw, 202.13px); position: absolute; text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word">6년의 시간을 지나 당연함 속에서도<br/>손을 놓지 않게 되었고,<br/>서로를 선택하는 법을 배웠습니다.</div>
+                <div data-layer="26.03.28 이제는 평생을 약속하려 합니다." class="0328" style="width: clamp(260px, 85.3vw, 332.80px); height: clamp(60px, 20.5vw, 80px); left: clamp(24px, 8vw, 31.13px); top: clamp(254px, 83.1vw, 324.01px); position: absolute; text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word">26.03.28<br/>이제는 평생을 약속하려 합니다.</div>
+                <div data-layer="Rectangle 22" class="Rectangle22" style="width: 100%; height: clamp(47px, 15.4vw, 60px); left: 0px; top: 0px; position: absolute; background: white"></div>
+                <div data-layer="Vector" class="Vector" style="left: clamp(148px, 48.5vw, 189.23px); top: clamp(63px, 20.7vw, 80.88px); position: absolute; width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px);">
+                  <img src="./image/14.png" alt="star" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div data-layer="Vector" class="Vector" style="left: clamp(148px, 48.5vw, 189.23px); top: clamp(137px, 44.8vw, 174.53px); position: absolute; width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px);">
+                  <img src="./image/14.png" alt="star" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div data-layer="Vector" class="Vector" style="left: clamp(148px, 48.5vw, 189.23px); top: clamp(234px, 76.7vw, 298.90px); position: absolute; width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px);">
+                  <img src="./image/14.png" alt="star" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>    
+            </div>
 
         <!-- GALLERY -->
         <div class="gallery-container">
@@ -1451,45 +1494,57 @@
 
             <!-- Groom Side -->
             <div class="account-group">
-                <div class="account-header">신랑측에게</div>
-                <div class="account-row">
-                    <div class="account-name">임석기</div>
-                    <div class="account-number">
-                        <span>신한 110-638-318975</span>
-                        <div class="copy-icon"></div>
-                    </div>
+                <div class="account-header">
+                    <span>신랑측에게</span>
+                    <div class="account-arrow">^</div>
                 </div>
-                <div class="account-row">
-                    <div class="account-name">이미혜</div>
-                    <div class="account-number">
-                        <span>신한 110-638-318975</span>
-                        <div class="copy-icon"></div>
+                <div class="account-header-line"></div>
+                <div class="account-content">
+                    <div class="account-row">
+                        <div class="account-name">임석기</div>
+                        <div class="account-number">
+                            <span>신한 110-638-318975</span>
+                            <div class="copy-icon"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="account-row">
-                    <div class="account-name">임승준</div>
-                    <div class="account-number">
-                        <span>신한 110-638-318975</span>
-                        <div class="copy-icon"></div>
+                    <div class="account-row">
+                        <div class="account-name">이미혜</div>
+                        <div class="account-number">
+                            <span>신한 110-638-318975</span>
+                            <div class="copy-icon"></div>
+                        </div>
+                    </div>
+                    <div class="account-row">
+                        <div class="account-name">임승준</div>
+                        <div class="account-number">
+                            <span>신한 110-638-318975</span>
+                            <div class="copy-icon"></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Bride Side -->
             <div class="account-group">
-                <div class="account-header">신부측에게</div>
-                <div class="account-row">
-                    <div class="account-name">염혜신</div>
-                    <div class="account-number">
-                        <span>신한 110-638-318975</span>
-                        <div class="copy-icon"></div>
-                    </div>
+                <div class="account-header">
+                    <span>신부측에게</span>
+                    <div class="account-arrow">^</div>
                 </div>
-                <div class="account-row">
-                    <div class="account-name">이하은</div>
-                    <div class="account-number">
-                        <span>신한 110-638-318975</span>
-                        <div class="copy-icon"></div>
+                <div class="account-header-line"></div>
+                <div class="account-content">
+                    <div class="account-row">
+                        <div class="account-name">염혜신</div>
+                        <div class="account-number">
+                            <span>신한 110-638-318975</span>
+                            <div class="copy-icon"></div>
+                        </div>
+                    </div>
+                    <div class="account-row">
+                        <div class="account-name">이하은</div>
+                        <div class="account-number">
+                            <span>신한 110-638-318975</span>
+                            <div class="copy-icon"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1683,6 +1738,26 @@
                     }
                 });
             }
+
+            // 계좌 섹션 여닫기 기능
+            const accountHeaders = document.querySelectorAll('.account-header');
+            accountHeaders.forEach(function(header) {
+                const arrow = header.querySelector('.account-arrow');
+                const content = header.nextElementSibling.nextElementSibling; // account-header-line 다음의 account-content
+                let isOpen = true;
+
+                header.addEventListener('click', function() {
+                    isOpen = !isOpen;
+                    
+                    if (isOpen) {
+                        content.classList.remove('hidden');
+                        arrow.style.transform = 'scaleX(1.3) rotate(0deg)'; // 위 화살표 (^)
+                    } else {
+                        content.classList.add('hidden');
+                        arrow.style.transform = 'scaleX(1.3) rotate(180deg)'; // 아래 화살표 (v)
+                    }
+                });
+            });
         });
     </script>
 
