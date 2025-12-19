@@ -115,7 +115,6 @@
             flex-direction: column;
             align-items: center;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 14px;
             overflow: hidden;
             min-height: 844px;
         }
@@ -123,7 +122,7 @@
         /* Utility */
         .text-center {
             text-align: center;
-            margin-top: 20%;
+            margin-top: 15%;
         }
 
         /* Typography helpers */
@@ -294,8 +293,8 @@
         }
 
         .gray-box-sm {
-            width: clamp(212px, 53vw, 320px);
-            height: clamp(252px, 63vw, 400px);
+            width: clamp(212px, 53vw, 212px);
+            height: clamp(252px, 63vw, 252px);
             position: relative;
             display: flex;
             flex-direction: column;
@@ -305,7 +304,7 @@
             background-size: 100% 100%;
             background-position: center;
             background-repeat: no-repeat;
-            margin-top: 20%;
+            margin-top: 25%;
         }
 
         .video-label-dark {
@@ -323,7 +322,6 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            margin: 0 auto 50px;
             position: relative;
             padding: 0 clamp(16px, 6vw, 24px);
         }
@@ -810,12 +808,13 @@
             width: calc(100% + clamp(36px, 12vw, 64px));
             margin-left: calc(-1 * clamp(18px, 6vw, 32px));
             margin-right: calc(-1 * clamp(18px, 6vw, 32px));
-            min-height: clamp(270px, 67.5vw, 310px);
+            min-height: clamp(270px, 67.5vw, 270px);
             background: #F7F7F7;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding-top: 10%;
         }
 
         /* LOCATION */
@@ -847,7 +846,7 @@
         .map-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 50px;
             justify-content: center;
             width: 100%;
             padding: clamp(16px, 5vw, 24px);
@@ -1040,7 +1039,6 @@
 
         .countdown-timer {
             display: flex;
-            gap: clamp(8px, 2vw, 12px);
             justify-content: center;
             width: 100%;
             max-width: 400px;
@@ -1049,25 +1047,34 @@
 
         .countdown-box {
             flex: 1;
-            background: white;
-            border-radius: 8px;
             padding: clamp(16px, 4vw, 24px) clamp(8px, 2vw, 12px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: clamp(80px, 20vw, 120px);
+            position: relative;
+        }
+
+        .countdown-box:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 30%;
+            background: rgba(0, 0, 0, 0.2);
         }
 
         .countdown-number {
-            font-size: clamp(28px, 7vw, 40px);
+            font-size: clamp(28px, 7vw, 30px);
             color: #333;
-            line-height: 1.2;
+            line-height: 2.1;
         }
 
         .countdown-label {
-            font-size: clamp(10px, 2.5vw, 12px);
+            font-size: clamp(8px, 2.5vw, 9px);
             color: #999;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -1152,7 +1159,6 @@
             }
 
             .calendar-section {
-                padding: 0 16px;
             }
 
             .day-header {
@@ -1166,7 +1172,7 @@
             }
 
             .day-cell {
-                font-size: 13px;
+                font-size: 15px;
             }
 
             .day-cell.highlight::before {
@@ -1181,7 +1187,7 @@
             }
 
             .section-title {
-                font-size: 36px;
+                font-size: 50px;
             }
 
             .datetime-main {
@@ -1288,7 +1294,6 @@
             }
 
             .location-section {
-                gap: 30px;
                 margin-top: 50px;
                 padding: 0 18px;
             }
@@ -1297,11 +1302,11 @@
                 width: calc(100% + 36px);
                 margin-left: -18px;
                 margin-right: -18px;
-                height: 200px;
+                height: 220px;
             }
 
             .map-buttons {
-                padding: 16px;
+                padding: 30px;
             }
 
             .map-btn {
@@ -1353,6 +1358,14 @@
 
             .lightbox-nav {
                 bottom: -4px;
+            }
+
+            .Frame44 {
+                height: 800px !important;
+            }
+
+            .Frame44 .Img5 {
+                height: 800px !important;
             }
         }
     </style>
@@ -1513,8 +1526,8 @@
         </div>
 
         <!-- TIMELINE SECTION -->
-        <div data-layer="Frame 44" class="Frame44" style="width: 100%; height: clamp(600px, 190vw, 759px); position: relative; margin-bottom: 20%;">
-                <img data-layer="img 5" class="Img5" style="width: 100%; height: clamp(600px, 190vw, 759px); left: 0px; top: 60px; position: absolute" src="./image/17.png"">
+        <div data-layer="Frame 44" class="Frame44" style="width: 100%; height: clamp(600px, 190vw, 868px); position: relative; margin-bottom: 30%;">
+                <img data-layer="img 5" class="Img5" style="width: 100%; height: clamp(600px, 190vw, 868px); left: 0px; top: 8%; position: absolute" src="./image/17.png"">
                 <div data-layer="2019년 처음, 서로의 이름을 부르기 시작하며" style="width: clamp(260px, 85.3vw, 332.80px); height: clamp(60px, 20.5vw, 80px); left: clamp(24px, 8vw, 31.13px); top: clamp(80px, 26.4vw, 102.88px); position: absolute; text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word">2019년 처음,<br/>서로의 이름을 부르기 시작하며</div>
                 <div data-layer="6년의 시간을 지나 당연함 속에서도 손을 놓지 않게 되었고, 서로를 선택하는 법을 배웠습니다." style="width: clamp(260px, 85.3vw, 332.80px); height: clamp(60px, 20.5vw, 80px); left: clamp(24px, 8vw, 31.13px); top: clamp(158px, 51.8vw, 202.13px); position: absolute; text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word">6년의 시간을 지나 당연함 속에서도<br/>손을 놓지 않게 되었고,<br/>서로를 선택하는 법을 배웠습니다.</div>
                 <div data-layer="26.03.28 이제는 평생을 약속하려 합니다." class="0328" style="width: clamp(260px, 85.3vw, 332.80px); height: clamp(60px, 20.5vw, 80px); left: clamp(24px, 8vw, 31.13px); top: clamp(254px, 83.1vw, 324.01px); position: absolute; text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word">26.03.28<br/>이제는 평생을 약속하려 합니다.</div>
@@ -1533,12 +1546,13 @@
         <!-- GALLERY -->
         <div class="gallery-container">
             <div class="section-title">Gallery</div>
-            <div style="font-size: 14px; margin-top: 10px;">사진을 클릭하시면 전체 화면 보기가 가능합니다.</div>
+            <div style="font-size: 14px; margin-top: 5%;">사진을 클릭하시면 전체 화면 보기가 가능합니다.</div>
 
             <div class="gallery-grid">
                 <div class="gallery-row">
                     <div class="gallery-item" style="background-image: url('./image/20.jpeg');"></div>
                     <div class="gallery-item" style="background-image: url('./image/21.jpeg');"></div>
+                    <div class="gallery-item">사진</div>
                 </div>
                 <div class="gallery-row">
                     <div class="gallery-item">사진</div>
@@ -1607,7 +1621,7 @@
             <div class="text-center">
                 <div class="section-title">Send to..</div>
                 <div style="margin-top:20px; font-size:16px; font-weight:500;">마음 전하실 곳</div>
-                <div style="margin-top:5px; font-size:14px; opacity:0.5;">참석이 어려우신 분들을 위해 기재했습니다.<br>너그러운 마음으로 양해
+                <div style="margin-top:5%; font-size:14px; opacity:0.5;">참석이 어려우신 분들을 위해 기재했습니다.<br>너그러운 마음으로 양해
                     부탁드립니다.</div>
             </div>
 
@@ -1817,8 +1831,8 @@
                                 window.open(`https://map.naver.com/v5/search/${address}`, '_blank');
                             }, 1000);
                         } else {
-                            // PC: 티맵은 모바일 전용이므로 네이버 지도로 대체
-                            window.open(`https://map.naver.com/v5/search/${address}`, '_blank');
+                            // PC: 티맵은 모바일 전용
+                            alert('모바일 전용입니다');
                         }
                     });
                 }
