@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
+    <!-- Preload hero GIF for immediate playback -->
+    <link rel="preload" as="image" href="./mp4/1.gif" fetchpriority="high">
     <!-- Google Fonts for Noto Serif KR -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1377,7 +1379,7 @@
 
         <!-- INTRO -->
         <div class="hero-image-placeholder">
-            <img src="./mp4/1.gif" alt="hero" class="hero-video">
+            <img src="./mp4/1.gif" alt="hero" class="hero-video" loading="eager" fetchpriority="high">
         </div>
 
         <!-- MAIN VIDEO -->
