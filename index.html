@@ -683,7 +683,6 @@
             justify-content: center;
             font-size: clamp(13px, 3.6vw, 15px);
             color: var(--color-dark);
-            border-radius: 8px;
             cursor: pointer;
             background-size: cover; 
             background-position: center;
@@ -1358,6 +1357,37 @@
             .Frame44 .Img5 {
                 height: 800px !important;
             }
+
+            /* Timeline 텍스트와 아이콘 위치 고정 (이미지 기준 가운데 정렬) */
+            .Frame44 > div[data-layer*="2019년 처음"] {
+                top: 102.88px !important;
+                left: 31.13px !important;
+            }
+
+            .Frame44 > div[data-layer*="6년의 시간을 지나"] {
+                top: 202.13px !important;
+                left: 31.13px !important;
+            }
+
+            .Frame44 > div[data-layer*="26.03.28"] {
+                top: 324.01px !important;
+                left: 31.13px !important;
+            }
+
+            .Frame44 .Vector:nth-of-type(1) {
+                top: 80.88px !important;
+                left: 189.23px !important;
+            }
+
+            .Frame44 .Vector:nth-of-type(2) {
+                top: 174.53px !important;
+                left: 189.23px !important;
+            }
+
+            .Frame44 .Vector:nth-of-type(3) {
+                top: 298.90px !important;
+                left: 189.23px !important;
+            }
         }
     </style>
 </head>
@@ -1530,7 +1560,7 @@
                 <div data-layer="Vector" class="Vector" style="left: clamp(148px, 48.5vw, 189.23px); top: clamp(234px, 76.7vw, 298.90px); position: absolute; width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px);">
                   <img src="./image/icon3.png" alt="star" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>    
-            </div>
+        </div>
 
         <!-- GALLERY -->
         <div class="gallery-container">
