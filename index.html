@@ -1752,9 +1752,33 @@
             }
 
             // 주소: 경기 성남시 분당구 안양판교로 1219
-            // 직접 좌표 사용 (위도, 경도)
-            const point = new naver.maps.LatLng(37.3950, 127.1110);
-            createMap(mapDiv, point);
+            const address = '경기 성남시 분당구 안양판교로 1219';
+            
+            // 주소를 좌표로 변환 (geocoding)
+            naver.maps.Service.geocode({
+                query: address
+            }, function(status, response) {
+                if (status === naver.maps.Service.Status.ERROR) {
+                    console.error('주소 검색 실패:', status);
+                    // 실패 시 기본 좌표 사용
+                    const defaultPoint = new naver.maps.LatLng(37.3950, 127.1110);
+                    createMap(mapDiv, defaultPoint);
+                    return;
+                }
+
+                if (response.v2.meta.totalCount === 0) {
+                    console.error('주소를 찾을 수 없습니다');
+                    // 실패 시 기본 좌표 사용
+                    const defaultPoint = new naver.maps.LatLng(37.3950, 127.1110);
+                    createMap(mapDiv, defaultPoint);
+                    return;
+                }
+
+                // 첫 번째 검색 결과의 좌표 사용
+                const item = response.v2.addresses[0];
+                const point = new naver.maps.LatLng(parseFloat(item.y), parseFloat(item.x));
+                createMap(mapDiv, point);
+            });
         }
 
         function createMap(mapDiv, point) {
