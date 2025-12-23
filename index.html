@@ -13,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
     <!-- 네이버 지도 API: X-NCP-APIGW-API-KEY-ID (클라이언트 ID)를 네이버 클라우드 플랫폼에서 발급받아 입력하세요 -->
-    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=rsg3odfsp8&submodules=geocoder&callback=initMap"></script>
+    <script type="text/javascript"
+        src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=rsg3odfsp8&submodules=geocoder&callback=initMap"></script>
 
     <!-- 기본 OG -->
     <meta property="og:type" content="website" />
@@ -24,7 +25,7 @@
 
     <!-- 카카오톡 필수 -->
     <meta property="og:site_name" content="Dear Beloved" />
-    
+
     <style>
         /* Font Definitions */
         @font-face {
@@ -684,7 +685,7 @@
             font-size: clamp(13px, 3.6vw, 15px);
             color: var(--color-dark);
             cursor: pointer;
-            background-size: cover; 
+            background-size: cover;
             background-position: center;
         }
 
@@ -884,8 +885,7 @@
             flex-direction: column;
             align-items: center;
             gap: clamp(40px, 10vw, 70px);
-            min-height: clamp(1300px, 350vw, 1500px);
-            height: clamp(1300px, 350vw, 1500px);
+            height: auto;
         }
 
         .accounts-section::before {
@@ -894,7 +894,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: clamp(1300px, 350vw, 1500px);
+            height: 100%;
             background-image: url(./image/bg2.png);
             background-size: 100% 100%;
             background-position: center;
@@ -903,7 +903,7 @@
             pointer-events: none;
         }
 
-        .accounts-section > * {
+        .accounts-section>* {
             position: relative;
             z-index: 1;
         }
@@ -912,8 +912,7 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            min-height: clamp(400px, 100vw, 600px);
-            height: clamp(400px, 100vw, 600px);
+            height: auto;
         }
 
         .account-group {
@@ -1189,8 +1188,7 @@
                 font-size: 14px;
             }
 
-            .calendar-section {
-            }
+            .calendar-section {}
 
             .day-header {
                 gap: 6px;
@@ -1348,22 +1346,23 @@
             .accounts-section {
                 padding: 60px 20px 60px;
                 gap: 40px;
-                min-height: 1600px;
-                height: 1600px;
+                height: auto;
+                min-height: auto;
             }
 
             .accounts-section::before {
-                height: 1600px;
+                height: 100%;
             }
 
             .account-groups-wrapper {
-                min-height: 600px;
-                height: 600px;
+                height: auto;
+                min-height: auto;
             }
 
             .account-group {
-                gap: 18px;
-                padding: 30px;
+                gap: 14px;
+                padding: 18px;
+                margin-top: 0;
             }
 
             .account-header {
@@ -1412,17 +1411,17 @@
             }
 
             /* Timeline 텍스트와 아이콘 위치 고정 (이미지 기준 가운데 정렬) */
-            .Frame44 > div[data-layer*="2019년 처음"] {
+            .Frame44>div[data-layer*="2019년 처음"] {
                 top: 102.88px !important;
                 left: 31.13px !important;
             }
 
-            .Frame44 > div[data-layer*="6년의 시간을 지나"] {
+            .Frame44>div[data-layer*="6년의 시간을 지나"] {
                 top: 202.13px !important;
                 left: 31.13px !important;
             }
 
-            .Frame44 > div[data-layer*="26.03.28"] {
+            .Frame44>div[data-layer*="26.03.28"] {
                 top: 324.01px !important;
                 left: 31.13px !important;
             }
@@ -1642,207 +1641,226 @@
                 </div>
             </div>
             <div class="countdown-text">
-                승준 <span style="color: #333;">♥</span> 하은 결혼식이 <span class="highlight" id="days-text">0일</span> <span id="countdown-status">남았습니다</span>
+                승준 <span style="color: #333;">♥</span> 하은 결혼식이 <span class="highlight" id="days-text">0일</span> <span
+                    id="countdown-status">남았습니다</span>
             </div>
         </div>
 
         <!-- TIMELINE SECTION -->
-        <div data-layer="Frame 44" class="Frame44" style="width: 100%; height: clamp(600px, 190vw, 868px); position: relative; margin-bottom: 30%;">
-                <img data-layer="img 5" class="Img5 fade-in-up" style="width: 100%; height: clamp(600px, 190vw, 868px); left: 0px; top: 16%; position: absolute" src="./image/img2.png"">
-                <div data-layer="Rectangle 22" class="Rectangle22" style="width: 100%; height: clamp(47px, 15.4vw, 60px); left: 0px; top: 0px; position: absolute; background: white"></div>
-                <div class="timeline-content" style="position: absolute; top: 4%; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(25px, 5vw, 30px);">
-                    <div class="fade-in-up delay-1" style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                        <div data-layer="Vector" class="Vector" style="width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px); margin-bottom: 45px;">
-                            <img src="./image/icon3.png" alt="star" style="width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                        <div data-layer="2019년 처음, 서로의 이름을 부르기 시작하며" style="width: clamp(260px, 85.3vw, 332.80px); text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word;">2019년 처음,<br/>서로의 이름을 부르기 시작하며</div>
-                    </div>
-                    <div class="fade-in-up delay-2" style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                        <div data-layer="Vector" class="Vector" style="width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px); margin-bottom: 45px;">
-                            <img src="./image/icon3.png" alt="star" style="width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                        <div data-layer="6년의 시간을 지나 당연함 속에서도 손을 놓지 않게 되었고, 서로를 선택하는 법을 배웠습니다." style="width: clamp(260px, 85.3vw, 332.80px); text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word;">6년의 시간을 지나 당연함 속에서도<br/>손을 놓지 않게 되었고,<br/>서로를 선택하는 법을 배웠습니다.</div>
-                    </div>
-                    <div class="fade-in-up delay-3" style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                        <div data-layer="Vector" class="Vector" style="width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px); margin-bottom: 45px;">
-                            <img src="./image/icon3.png" alt="star" style="width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                        <div data-layer="26.03.28 이제는 평생을 약속하려 합니다." class="0328" style="width: clamp(260px, 85.3vw, 332.80px); text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word;">26.03.28<br/>이제는 평생을 약속하려 합니다.</div>
-                    </div>
-                </div>
+        <div data-layer="Frame 44" class="Frame44"
+            style="width: 100%; height: clamp(600px, 190vw, 868px); position: relative; margin-bottom: 30%;">
+            <img data-layer="img 5" class="Img5 fade-in-up"
+                style="width: 100%; height: clamp(600px, 190vw, 868px); left: 0px; top: 16%; position: absolute"
+                src="./image/img2.png"">
+                <div data-layer=" Rectangle 22" class="Rectangle22"
+                style="width: 100%; height: clamp(47px, 15.4vw, 60px); left: 0px; top: 0px; position: absolute; background: white">
         </div>
-
-        <!-- GALLERY -->
-        <div class="gallery-container fade-in-up delay-2">
-            <div class="section-title">Gallery</div>
-            <div style="font-size: 14px; margin-top: 5%;">사진을 클릭하시면 전체 화면 보기가 가능합니다.</div>
-
-            <div class="gallery-grid">
-                <div class="gallery-row">
-                    <div class="gallery-item" style="background-image: url('./image/01.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/02.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/03.jpg');"></div>
+        <div class="timeline-content"
+            style="position: absolute; top: 4%; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(25px, 5vw, 30px);">
+            <div class="fade-in-up delay-1"
+                style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div data-layer="Vector" class="Vector"
+                    style="width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px); margin-bottom: 45px;">
+                    <img src="./image/icon3.png" alt="star" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
-                <div class="gallery-row">
-                    <div class="gallery-item" style="background-image: url('./image/04.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/05.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/06.jpg');"></div>
-                </div>
-                <div class="gallery-row">
-                    <div class="gallery-item" style="background-image: url('./image/07.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/08.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/09.jpg');"></div>
-                </div>
-                <div class="gallery-row">
-                    <div class="gallery-item" style="background-image: url('./image/10.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/11.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/12.jpg');"></div>
-                </div>
-                <div class="gallery-row">
-                    <div class="gallery-item" style="background-image: url('./image/13.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/14.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/15.jpg');"></div>
-                </div>
-                <div class="gallery-row">
-                    <div class="gallery-item" style="background-image: url('./image/16.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/17.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/18.jpg');"></div>
-                </div>
-                <div class="gallery-row">
-                    <div class="gallery-item" style="background-image: url('./image/19.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/20.jpg');"></div>
-                    <div class="gallery-item" style="background-image: url('./image/21.jpg');"></div>
-                </div>
-
+                <div data-layer="2019년 처음, 서로의 이름을 부르기 시작하며"
+                    style="width: clamp(260px, 85.3vw, 332.80px); text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word;">
+                    2019년 처음,<br />서로의 이름을 부르기 시작하며</div>
             </div>
-
-            <div class="more-btn">
-                <div class="arrow-up"
-                    style="width: 10px; height: 10px; border-left: 1px solid black; border-top: 1px solid black; transform: rotate(225deg); border-right:0; border-bottom:0;">
+            <div class="fade-in-up delay-2"
+                style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div data-layer="Vector" class="Vector"
+                    style="width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px); margin-bottom: 45px;">
+                    <img src="./image/icon3.png" alt="star" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
-                <div style="margin-top: 10px; font-weight: 500;">더보기</div>
+                <div data-layer="6년의 시간을 지나 당연함 속에서도 손을 놓지 않게 되었고, 서로를 선택하는 법을 배웠습니다."
+                    style="width: clamp(260px, 85.3vw, 332.80px); text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word;">
+                    6년의 시간을 지나 당연함 속에서도<br />손을 놓지 않게 되었고,<br />서로를 선택하는 법을 배웠습니다.</div>
             </div>
-
-        </div>
-
-        <!-- LOCATION -->
-        <div class="bg-gray-large fade-in-up delay-2">
-            <div class="bg-gray-large">
-                <div class="section-title">Location</div>
-                <div class="text-center">
-                    <div style="font-size:16px; font-weight:500;">우리들교회 판교채플 8층 탄설홀</div>
-                    <div style="font-size:14px; opacity:0.5; margin-top:5px;">경기 성남시 분당구 안양판교로 1219</div>
+            <div class="fade-in-up delay-3"
+                style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div data-layer="Vector" class="Vector"
+                    style="width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px); margin-bottom: 45px;">
+                    <img src="./image/icon3.png" alt="star" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
-            </div>
-
-            <div style="width:100%;">
-                <div class="map-placeholder">
-                    <div id="naver-map" style="width:100%;height:100%;"></div>
-                </div>
-                <div class="map-buttons">
-                    <div class="map-btn">
-                        <div class="map-icon kakao"></div>
-                        <div>카카오맵</div>
-                    </div>
-                    <div class="map-btn">
-                        <div class="map-icon naver"></div>
-                        <div>네이버맵</div>
-                    </div>
-                    <div class="map-btn">
-                        <div class="map-icon tmap"></div>
-                        <div>티맵</div>
-                    </div>
-                </div>
+                <div data-layer="26.03.28 이제는 평생을 약속하려 합니다." class="0328"
+                    style="width: clamp(260px, 85.3vw, 332.80px); text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word;">
+                    26.03.28<br />이제는 평생을 약속하려 합니다.</div>
             </div>
         </div>
+    </div>
 
-        <!-- ACCOUNTS -->
-        <div class="accounts-section">
-            <div class="text-center" style="margin-top: 25%;">
-                <div class="section-title">Send to..</div>
-                <div style="margin-top:20px; font-size:16px; font-weight:500;">마음 전하실 곳</div>
-                <div style="margin-top:5px; font-size:14px; opacity:0.5;">참석이 어려우신 분들을 위해 기재했습니다.<br>너그러운 마음으로 양해
-                    부탁드립니다.</div>
+    <!-- GALLERY -->
+    <div class="gallery-container fade-in-up delay-2">
+        <div class="section-title">Gallery</div>
+        <div style="font-size: 14px; margin-top: 5%;">사진을 클릭하시면 전체 화면 보기가 가능합니다.</div>
+
+        <div class="gallery-grid">
+            <div class="gallery-row">
+                <div class="gallery-item" style="background-image: url('./image/01.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/02.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/03.jpg');"></div>
             </div>
-
-            <!-- Account Groups Wrapper -->
-            <div class="account-groups-wrapper">
-                <!-- Groom Side -->
-                <div class="account-group">
-                    <div class="account-header">
-                        <span>신랑측에게</span>
-                        <div class="account-arrow">^</div>
-                    </div>
-                    <div class="account-header-line"></div>
-                    <div class="account-content">
-                        <div class="account-row">
-                            <div class="account-name">임석기</div>
-                            <div class="account-number">
-                                <span>신한 110-638-318975</span>
-                                <div class="copy-icon"></div>
-                            </div>
-                        </div>
-                        <div class="account-row">
-                            <div class="account-name">이미혜</div>
-                            <div class="account-number">
-                                <span>신한 110-638-318975</span>
-                                <div class="copy-icon"></div>
-                            </div>
-                        </div>
-                        <div class="account-row">
-                            <div class="account-name">임승준</div>
-                            <div class="account-number">
-                                <span>카뱅 3333-07-4110972</span>
-                                <div class="copy-icon"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bride Side -->
-                <div class="account-group">
-                    <div class="account-header">
-                        <span>신부측에게</span>
-                        <div class="account-arrow">^</div>
-                    </div>
-                    <div class="account-header-line"></div>
-                    <div class="account-content">
-                        <div class="account-row">
-                            <div class="account-name">염혜신</div>
-                            <div class="account-number">
-                                <span>신한 110-638-318975</span>
-                                <div class="copy-icon"></div>
-                            </div>
-                        </div>
-                        <div class="account-row">
-                            <div class="account-name">이하은</div>
-                            <div class="account-number">
-                                <span>신한 110-638-318975</span>
-                                <div class="copy-icon"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="gallery-row">
+                <div class="gallery-item" style="background-image: url('./image/04.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/05.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/06.jpg');"></div>
             </div>
-
-            <!-- Footer Area -->
-            <div class="footer-section fade-in-up delay-3">
+            <div class="gallery-row">
+                <div class="gallery-item" style="background-image: url('./image/07.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/08.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/09.jpg');"></div>
+            </div>
+            <div class="gallery-row">
+                <div class="gallery-item" style="background-image: url('./image/10.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/11.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/12.jpg');"></div>
+            </div>
+            <div class="gallery-row">
+                <div class="gallery-item" style="background-image: url('./image/13.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/14.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/15.jpg');"></div>
+            </div>
+            <div class="gallery-row">
+                <div class="gallery-item" style="background-image: url('./image/16.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/17.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/18.jpg');"></div>
+            </div>
+            <div class="gallery-row">
+                <div class="gallery-item" style="background-image: url('./image/19.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/20.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./image/21.jpg');"></div>
             </div>
 
         </div>
+
+        <div class="more-btn">
+            <div class="arrow-up"
+                style="width: 10px; height: 10px; border-left: 1px solid black; border-top: 1px solid black; transform: rotate(225deg); border-right:0; border-bottom:0;">
+            </div>
+            <div style="margin-top: 10px; font-weight: 500;">더보기</div>
+        </div>
+
+    </div>
+
+    <!-- LOCATION -->
+    <div class="bg-gray-large fade-in-up delay-2">
+        <div class="bg-gray-large">
+            <div class="section-title">Location</div>
+            <div class="text-center">
+                <div style="font-size:16px; font-weight:500;">우리들교회 판교채플 8층 탄설홀</div>
+                <div style="font-size:14px; opacity:0.5; margin-top:5px;">경기 성남시 분당구 안양판교로 1219</div>
+            </div>
+        </div>
+
+        <div style="width:100%;">
+            <div class="map-placeholder">
+                <div id="naver-map" style="width:100%;height:100%;"></div>
+            </div>
+            <div class="map-buttons">
+                <div class="map-btn">
+                    <div class="map-icon kakao"></div>
+                    <div>카카오맵</div>
+                </div>
+                <div class="map-btn">
+                    <div class="map-icon naver"></div>
+                    <div>네이버맵</div>
+                </div>
+                <div class="map-btn">
+                    <div class="map-icon tmap"></div>
+                    <div>티맵</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACCOUNTS -->
+    <div class="accounts-section">
+        <div class="text-center" style="margin-top: 25%;">
+            <div class="section-title">Send to..</div>
+            <div style="margin-top:20px; font-size:16px; font-weight:500;">마음 전하실 곳</div>
+            <div style="margin-top:5px; font-size:14px; opacity:0.5;">참석이 어려우신 분들을 위해 기재했습니다.<br>너그러운 마음으로 양해
+                부탁드립니다.</div>
+        </div>
+
+        <!-- Account Groups Wrapper -->
+        <div class="account-groups-wrapper">
+            <!-- Groom Side -->
+            <div class="account-group">
+                <div class="account-header">
+                    <span>신랑측에게</span>
+                    <div class="account-arrow">^</div>
+                </div>
+                <div class="account-header-line"></div>
+                <div class="account-content hidden">
+                    <div class="account-row">
+                        <div class="account-name">임석기</div>
+                        <div class="account-number">
+                            <span>신한 110-638-318975</span>
+                            <div class="copy-icon"></div>
+                        </div>
+                    </div>
+                    <div class="account-row">
+                        <div class="account-name">이미혜</div>
+                        <div class="account-number">
+                            <span>신한 110-638-318975</span>
+                            <div class="copy-icon"></div>
+                        </div>
+                    </div>
+                    <div class="account-row">
+                        <div class="account-name">임승준</div>
+                        <div class="account-number">
+                            <span>카뱅 3333-07-4110972</span>
+                            <div class="copy-icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bride Side -->
+            <div class="account-group">
+                <div class="account-header">
+                    <span>신부측에게</span>
+                    <div class="account-arrow">^</div>
+                </div>
+                <div class="account-header-line"></div>
+                <div class="account-content hidden">
+                    <div class="account-row">
+                        <div class="account-name">염혜신</div>
+                        <div class="account-number">
+                            <span>신한 110-638-318975</span>
+                            <div class="copy-icon"></div>
+                        </div>
+                    </div>
+                    <div class="account-row">
+                        <div class="account-name">이하은</div>
+                        <div class="account-number">
+                            <span>신한 110-638-318975</span>
+                            <div class="copy-icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Area -->
+        <div class="footer-section fade-in-up delay-3">
+        </div>
+
+    </div>
     </div>
 
     <script>
         // 결혼식 날짜: 2026년 3월 28일 오후 2시
         const weddingDate = new Date('2026-03-28T14:00:00');
-        
+
         function updateCountdown() {
             const now = new Date();
             const timeDiff = weddingDate - now; // 결혼식까지 남은 시간 (음수면 이미 지남)
-            
+
             let days, hours, minutes, seconds;
             let statusText;
-            
+
             if (timeDiff > 0) {
                 // 결혼식 이전: 카운트다운
                 days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
@@ -1859,21 +1877,21 @@
                 seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
                 statusText = '지났습니다';
             }
-            
+
             // 숫자 표시 (2자리로)
             document.getElementById('days').textContent = String(days).padStart(2, '0');
             document.getElementById('hours').textContent = String(hours).padStart(2, '0');
             document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
             document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            
+
             // 한국어 텍스트 업데이트
             document.getElementById('days-text').textContent = days + '일';
             document.getElementById('countdown-status').textContent = statusText;
         }
-        
+
         // 초기 실행
         updateCountdown();
-        
+
         // 1초마다 업데이트
         setInterval(updateCountdown, 1000);
     </script>
@@ -1891,11 +1909,11 @@
 
             // 주소: 경기 성남시 분당구 안양판교로 1219
             const address = '경기 성남시 분당구 안양판교로 1219';
-            
+
             // 주소를 좌표로 변환 (geocoding)
             naver.maps.Service.geocode({
                 query: address
-            }, function(status, response) {
+            }, function (status, response) {
                 if (status === naver.maps.Service.Status.ERROR) {
                     console.error('주소 검색 실패:', status);
                     // 실패 시 기본 좌표 사용
@@ -1941,7 +1959,7 @@
                 content: '<div style="padding:10px;font-size:14px;text-align:center;">우리들교회 판교채플<br>8층 탄설홀</div>'
             });
 
-            naver.maps.Event.addListener(marker, 'click', function() {
+            naver.maps.Event.addListener(marker, 'click', function () {
                 if (infoWindow.getMap()) {
                     infoWindow.close();
                 } else {
@@ -1951,7 +1969,7 @@
         }
 
         // 페이지 로드 후 지도 초기화
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             if (typeof naver !== 'undefined' && naver.maps) {
                 initMap();
             } else {
@@ -1960,40 +1978,40 @@
         });
 
         // 지도 버튼 클릭 이벤트
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const address = encodeURIComponent('경기 성남시 분당구 안양판교로 1219');
-            
+
             // 모든 지도 버튼 찾기
             const mapButtons = document.querySelectorAll('.map-btn');
-            
-            mapButtons.forEach(function(btn) {
+
+            mapButtons.forEach(function (btn) {
                 btn.style.cursor = 'pointer';
-                
+
                 // 카카오맵 버튼
                 if (btn.querySelector('.map-icon.kakao')) {
-                    btn.addEventListener('click', function() {
+                    btn.addEventListener('click', function () {
                         window.open(`https://map.kakao.com/link/search/${address}`, '_blank');
                     });
                 }
-                
+
                 // 네이버맵 버튼
                 if (btn.querySelector('.map-icon.naver')) {
-                    btn.addEventListener('click', function() {
+                    btn.addEventListener('click', function () {
                         window.open(`https://map.naver.com/v5/search/${address}`, '_blank');
                     });
                 }
-                
+
                 // 티맵 버튼
                 if (btn.querySelector('.map-icon.tmap')) {
-                    btn.addEventListener('click', function() {
+                    btn.addEventListener('click', function () {
                         // 티맵: 모바일에서는 앱 링크 사용
                         if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                             // 모바일: 티맵 앱 링크 (앱이 설치되어 있으면 앱이 열림)
                             const tmapAppLink = `tmap://search?name=${address}`;
                             window.location.href = tmapAppLink;
-                            
+
                             // 앱이 없을 경우를 대비해 웹 검색으로 대체
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 window.open(`https://map.naver.com/v5/search/${address}`, '_blank');
                             }, 1000);
                         } else {
@@ -2013,11 +2031,11 @@
 
             if (moreBtn) {
                 moreBtn.style.cursor = 'pointer';
-                moreBtn.addEventListener('click', function() {
+                moreBtn.addEventListener('click', function () {
                     isExpanded = !isExpanded;
-                    
+
                     // 3번째 row부터 보이기/숨기기
-                    galleryRows.forEach(function(row, index) {
+                    galleryRows.forEach(function (row, index) {
                         if (index >= 2) {
                             if (isExpanded) {
                                 row.classList.add('show');
@@ -2040,27 +2058,30 @@
 
             // 계좌 섹션 여닫기 기능
             const accountHeaders = document.querySelectorAll('.account-header');
-            accountHeaders.forEach(function(header) {
+            accountHeaders.forEach(function (header) {
                 const arrow = header.querySelector('.account-arrow');
                 const content = header.nextElementSibling.nextElementSibling; // account-header-line 다음의 account-content
-                let isOpen = true;
+                let isOpen = false; // 초기 상태: 접힘
 
-                header.addEventListener('click', function() {
+                // 초기 화살표 방향 설정 (접힌 상태: 아래 방향)
+                arrow.style.transform = 'scaleX(1.8) rotate(180deg)';
+
+                header.addEventListener('click', function () {
                     isOpen = !isOpen;
-                    
+
                     if (isOpen) {
                         content.classList.remove('hidden');
-                        arrow.style.transform = 'scaleX(1.3) rotate(0deg)'; // 위 화살표 (^)
+                        arrow.style.transform = 'scaleX(1.8) rotate(0deg)'; // 위 화살표 (^)
                     } else {
                         content.classList.add('hidden');
-                        arrow.style.transform = 'scaleX(1.3) rotate(180deg)'; // 아래 화살표 (v)
+                        arrow.style.transform = 'scaleX(1.8) rotate(180deg)'; // 아래 화살표 (v)
                     }
                 });
             });
 
             // 계좌번호 복사 기능
             const copyIcons = document.querySelectorAll('.copy-icon');
-            
+
             // 토스트 메시지 표시 함수
             function showToast() {
                 // 기존 토스트가 있으면 제거
@@ -2068,38 +2089,38 @@
                 if (existingToast) {
                     existingToast.remove();
                 }
-                
+
                 // 새 토스트 생성
                 const toast = document.createElement('div');
                 toast.className = 'copy-toast';
                 toast.textContent = '클립보드에 복사되었습니다.';
                 document.body.appendChild(toast);
-                
+
                 // 애니메이션을 위해 약간의 지연 후 show 클래스 추가
-                setTimeout(function() {
+                setTimeout(function () {
                     toast.classList.add('show');
                 }, 10);
-                
+
                 // 2초 후 제거
-                setTimeout(function() {
+                setTimeout(function () {
                     toast.classList.remove('show');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         toast.remove();
                     }, 300);
                 }, 2000);
             }
-            
-            copyIcons.forEach(function(icon) {
+
+            copyIcons.forEach(function (icon) {
                 icon.style.cursor = 'pointer';
-                icon.addEventListener('click', function() {
+                icon.addEventListener('click', function () {
                     // 같은 account-number 안의 span에서 계좌번호 가져오기
                     const accountNumber = icon.parentElement.querySelector('span');
                     const accountText = accountNumber.textContent.trim();
-                    
+
                     // 클립보드에 복사
-                    navigator.clipboard.writeText(accountText).then(function() {
+                    navigator.clipboard.writeText(accountText).then(function () {
                         showToast();
-                    }).catch(function(err) {
+                    }).catch(function (err) {
                         // 클립보드 API가 지원되지 않는 경우 대체 방법
                         const textarea = document.createElement('textarea');
                         textarea.value = accountText;
@@ -2116,10 +2137,10 @@
 
             // 갤러리 이미지 전체화면 보기 기능
             const galleryItems = document.querySelectorAll('.gallery-item');
-            
+
             // background-image가 있는 gallery-item들만 수집
             const galleryImages = [];
-            galleryItems.forEach(function(item) {
+            galleryItems.forEach(function (item) {
                 const bgImage = window.getComputedStyle(item).backgroundImage;
                 if (bgImage && bgImage !== 'none') {
                     const imageUrl = bgImage.replace(/url\(['"]?(.+?)['"]?\)/i, '$1');
@@ -2138,7 +2159,7 @@
             const closeBtn = document.createElement('button');
             closeBtn.className = 'lightbox-close';
             closeBtn.innerHTML = '×';
-            
+
             // 네비게이션 화살표
             const prevBtn = document.createElement('button');
             prevBtn.className = 'lightbox-nav prev';
@@ -2146,11 +2167,11 @@
             const nextBtn = document.createElement('button');
             nextBtn.className = 'lightbox-nav next';
             nextBtn.innerHTML = '›';
-            
+
             // 카운터
             const counter = document.createElement('div');
             counter.className = 'lightbox-counter';
-            
+
             lightbox.appendChild(lightboxImage);
             lightbox.appendChild(closeBtn);
             lightbox.appendChild(prevBtn);
@@ -2208,46 +2229,46 @@
             }
 
             // 갤러리 아이템 클릭 이벤트
-            galleryImages.forEach(function(galleryItem, index) {
-                galleryItem.element.addEventListener('click', function() {
+            galleryImages.forEach(function (galleryItem, index) {
+                galleryItem.element.addEventListener('click', function () {
                     openLightbox(index);
                 });
             });
 
             // 닫기 버튼 클릭
-            closeBtn.addEventListener('click', function(e) {
+            closeBtn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 closeLightbox();
             });
 
             // 이전 버튼 클릭
-            prevBtn.addEventListener('click', function(e) {
+            prevBtn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 showPrev();
             });
 
             // 다음 버튼 클릭
-            nextBtn.addEventListener('click', function(e) {
+            nextBtn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 showNext();
             });
 
             // 이미지 클릭 시 이벤트 전파 방지
-            lightboxImage.addEventListener('click', function(e) {
+            lightboxImage.addEventListener('click', function (e) {
                 e.stopPropagation();
             });
 
             // 배경 클릭 시 닫기
-            lightbox.addEventListener('click', function(e) {
+            lightbox.addEventListener('click', function (e) {
                 if (e.target === lightbox) {
                     closeLightbox();
                 }
             });
 
             // 키보드 네비게이션
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 if (!lightbox.classList.contains('show')) return;
-                
+
                 if (e.key === 'Escape') {
                     closeLightbox();
                 } else if (e.key === 'ArrowLeft') {
@@ -2258,7 +2279,7 @@
             });
 
             // 드래그/스와이프로 이미지 넘기기 (마우스)
-            lightboxImage.addEventListener('mousedown', function(e) {
+            lightboxImage.addEventListener('mousedown', function (e) {
                 if (!lightbox.classList.contains('show')) return;
                 isDragging = true;
                 hasMoved = false;
@@ -2267,24 +2288,24 @@
                 e.preventDefault();
             });
 
-            document.addEventListener('mousemove', function(e) {
+            document.addEventListener('mousemove', function (e) {
                 if (!isDragging || !lightbox.classList.contains('show')) return;
                 const deltaX = e.clientX - startX;
                 const deltaY = e.clientY - startY;
-                
+
                 // 수평 이동이 수직 이동보다 크면 드래그로 간주
                 if (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10) {
                     hasMoved = true;
                 }
             });
 
-            document.addEventListener('mouseup', function(e) {
+            document.addEventListener('mouseup', function (e) {
                 if (!isDragging || !lightbox.classList.contains('show')) return;
                 isDragging = false;
-                
+
                 const deltaX = e.clientX - startX;
                 const deltaY = e.clientY - startY;
-                
+
                 // 수평 이동이 수직 이동보다 크고, 최소 50px 이상 이동했을 때
                 if (hasMoved && Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
                     if (deltaX > 0) {
@@ -2300,7 +2321,7 @@
                     const rect = lightboxImage.getBoundingClientRect();
                     const clickX = e.clientX - rect.left;
                     const imageWidth = rect.width;
-                    
+
                     if (clickX < imageWidth / 2) {
                         showPrev();
                     } else {
@@ -2310,7 +2331,7 @@
             });
 
             // 드래그/스와이프로 이미지 넘기기 (터치)
-            lightboxImage.addEventListener('touchstart', function(e) {
+            lightboxImage.addEventListener('touchstart', function (e) {
                 if (!lightbox.classList.contains('show')) return;
                 isDragging = true;
                 hasMoved = false;
@@ -2320,26 +2341,26 @@
                 e.preventDefault();
             });
 
-            lightboxImage.addEventListener('touchmove', function(e) {
+            lightboxImage.addEventListener('touchmove', function (e) {
                 if (!isDragging || !lightbox.classList.contains('show')) return;
                 const touch = e.touches[0];
                 const deltaX = touch.clientX - startX;
                 const deltaY = touch.clientY - startY;
-                
+
                 // 수평 이동이 수직 이동보다 크면 드래그로 간주
                 if (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10) {
                     hasMoved = true;
                 }
             });
 
-            lightboxImage.addEventListener('touchend', function(e) {
+            lightboxImage.addEventListener('touchend', function (e) {
                 if (!isDragging || !lightbox.classList.contains('show')) return;
                 isDragging = false;
-                
+
                 const touch = e.changedTouches[0];
                 const deltaX = touch.clientX - startX;
                 const deltaY = touch.clientY - startY;
-                
+
                 // 수평 이동이 수직 이동보다 크고, 최소 50px 이상 이동했을 때
                 if (hasMoved && Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
                     if (deltaX > 0) {
@@ -2355,7 +2376,7 @@
                     const rect = lightboxImage.getBoundingClientRect();
                     const tapX = touch.clientX - rect.left;
                     const imageWidth = rect.width;
-                    
+
                     if (tapX < imageWidth / 2) {
                         showPrev();
                     } else {
@@ -2387,7 +2408,7 @@
         }
 
         // 페이지 로드 시 애니메이션 초기화
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initScrollAnimation();
         });
 
