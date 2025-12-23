@@ -939,10 +939,15 @@
         }
 
         .account-arrow {
-            font-size: clamp(20px, 5vw, 24px);
+            width: clamp(16px, 4vw, 20px);
+            height: clamp(16px, 4vw, 20px);
+            background-image: url('./image/icon4.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             transition: transform 0.3s ease;
+            transform-origin: center;
             margin-left: auto;
-            transform: scaleX(1.8);
         }
 
         .account-header-line {
@@ -1797,7 +1802,7 @@
             <div class="account-group">
                 <div class="account-header">
                     <span>신랑측에게</span>
-                    <div class="account-arrow">^</div>
+                    <div class="account-arrow"></div>
                 </div>
                 <div class="account-header-line"></div>
                 <div class="account-content hidden">
@@ -1832,7 +1837,7 @@
             <div class="account-group">
                 <div class="account-header">
                     <span>신부측에게</span>
-                    <div class="account-arrow">^</div>
+                    <div class="account-arrow"></div>
                 </div>
                 <div class="account-header-line"></div>
                 <div class="account-content hidden">
@@ -2077,17 +2082,23 @@
                 let isOpen = false; // 초기 상태: 접힘
 
                 // 초기 화살표 방향 설정 (접힌 상태: 아래 방향)
-                arrow.style.transform = 'scaleX(1.8) rotate(180deg)';
+                if (arrow) {
+                    arrow.style.transform = 'rotate(180deg)';
+                }
 
                 header.addEventListener('click', function () {
                     isOpen = !isOpen;
 
                     if (isOpen) {
                         content.classList.remove('hidden');
-                        arrow.style.transform = 'scaleX(1.8) rotate(0deg)'; // 위 화살표 (^)
+                        if (arrow) {
+                            arrow.style.transform = 'rotate(0deg)'; // 펼쳐진 상태
+                        }
                     } else {
                         content.classList.add('hidden');
-                        arrow.style.transform = 'scaleX(1.8) rotate(180deg)'; // 아래 화살표 (v)
+                        if (arrow) {
+                            arrow.style.transform = 'rotate(180deg)'; // 접힌 상태
+                        }
                     }
                 });
             });
