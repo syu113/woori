@@ -161,6 +161,119 @@
             overflow: hidden;
         }
 
+        .music-toggle {
+            position: absolute;
+            top: clamp(16px, 5vw, 22px);
+            right: clamp(16px, 5vw, 22px);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+        }
+
+        .music-toggle-icon {
+            display: none;
+            color: #fff;
+        }
+
+        .music-toggle-icon.play-icon {
+            display: block;
+            font-size: 14px;
+            line-height: 1;
+            margin-left: 2px;
+        }
+
+        .music-toggle-icon.equalizer-icon {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 2px;
+            width: 18px;
+            height: 16px;
+        }
+
+        .equalizer-bar {
+            width: 2px;
+            background: #fff;
+            border-radius: 1px;
+        }
+
+        .equalizer-bar:nth-child(1) {
+            height: 100%;
+            animation: equalizerBar1 1.2s ease-in-out infinite;
+        }
+
+        .equalizer-bar:nth-child(2) {
+            height: 60%;
+            animation: equalizerBar2 1.2s ease-in-out infinite;
+        }
+
+        .equalizer-bar:nth-child(3) {
+            height: 80%;
+            animation: equalizerBar3 1.2s ease-in-out infinite;
+        }
+
+        .equalizer-bar:nth-child(4) {
+            height: 75%;
+            animation: equalizerBar4 1.2s ease-in-out infinite;
+        }
+
+        .equalizer-bar:nth-child(5) {
+            height: 40%;
+            animation: equalizerBar5 1.2s ease-in-out infinite;
+        }
+
+        @keyframes equalizerBar1 {
+            0%, 100% { height: 100%; }
+            50% { height: 40%; }
+        }
+
+        @keyframes equalizerBar2 {
+            0%, 100% { height: 60%; }
+            50% { height: 90%; }
+        }
+
+        @keyframes equalizerBar3 {
+            0%, 100% { height: 80%; }
+            50% { height: 30%; }
+        }
+
+        @keyframes equalizerBar4 {
+            0%, 100% { height: 75%; }
+            50% { height: 95%; }
+        }
+
+        @keyframes equalizerBar5 {
+            0%, 100% { height: 40%; }
+            50% { height: 70%; }
+        }
+
+        .music-toggle.paused {
+            opacity: 0.6;
+        }
+
+        .music-toggle.paused .music-toggle-icon.play-icon {
+            display: block;
+        }
+
+        .music-toggle.paused .music-toggle-icon.equalizer-icon {
+            display: none;
+        }
+
+        .music-toggle:not(.paused) .music-toggle-icon.play-icon {
+            display: none;
+        }
+
+        .music-toggle:not(.paused) .music-toggle-icon.equalizer-icon {
+            display: flex;
+        }
+
         .hero-video {
             position: absolute;
             top: 0;
@@ -1508,6 +1621,16 @@
         <!-- INTRO -->
         <div class="hero-image-placeholder">
             <img src="./mp4/top.gif" alt="hero" class="hero-video" loading="eager" fetchpriority="high">
+            <button class="music-toggle" type="button" aria-label="배경 음악 재생/일시정지">
+                <span class="music-toggle-icon play-icon">▶</span>
+                <span class="music-toggle-icon equalizer-icon">
+                    <span class="equalizer-bar"></span>
+                    <span class="equalizer-bar"></span>
+                    <span class="equalizer-bar"></span>
+                    <span class="equalizer-bar"></span>
+                    <span class="equalizer-bar"></span>
+                </span>
+            </button>
         </div>
 
         <!-- MAIN VIDEO -->
@@ -1530,13 +1653,13 @@
             <div class="invitation-body">
                 <div class="text-group-1">
                     <div class="fade-in-up delay-1">하나님의 은혜 안에서 저희 두 사람이</div>
-                    <div class="fade-in-up delay-2">서로에게 귀한 반려자로 서게 되었습니다.</div>
+                    <div class="fade-in-up delay-1">서로에게 귀한 반려자로 서게 되었습니다.</div>
                 </div>
                 <div class="text-group-2">
-                    <div class="fade-in-up delay-3">기도와 사랑으로 여기까지 인도해 주신</div>
-                    <div class="fade-in-up delay-4">모든 분들께 감사드리며,</div>
-                    <div class="fade-in-up delay-5">저희의 시작도 함께 기뻐해 주신다면</div>
-                    <div class="fade-in-up delay-6">큰 축복이 될 것입니다.</div>
+                    <div class="fade-in-up delay-1">기도와 사랑으로 여기까지 인도해 주신</div>
+                    <div class="fade-in-up delay-1">모든 분들께 감사드리며,</div>
+                    <div class="fade-in-up delay-1">저희의 시작도 함께 기뻐해 주신다면</div>
+                    <div class="fade-in-up delay-1">큰 축복이 될 것입니다.</div>
                 </div>
             </div>
 
@@ -1867,6 +1990,9 @@
 
     </div>
     </div>
+
+    <!-- 배경 음악 -->
+    <audio id="bgm-audio" src="./mp4/video.mp4" loop preload="auto" autoplay></audio>
 
     <script>
         // 결혼식 날짜: 2026년 3월 28일 오후 2시
@@ -2442,6 +2568,96 @@
         } else {
             initScrollAnimation();
         }
+
+        // 배경 음악 재생 + 토글 버튼 (모바일 자동재생 대응)
+        document.addEventListener('DOMContentLoaded', function () {
+            const bgm = document.getElementById('bgm-audio');
+            const musicToggle = document.querySelector('.music-toggle');
+
+            if (!bgm || !musicToggle) return;
+
+            // 오디오 파일 로드 확인
+            bgm.addEventListener('error', function (e) {
+                console.warn('배경 음악 파일을 로드할 수 없습니다. 파일 경로를 확인해주세요.');
+                // 오디오 파일이 없으면 버튼 숨기기
+                if (musicToggle) {
+                    musicToggle.style.display = 'none';
+                }
+            });
+
+            // 버튼 상태 반영 함수
+            function updateMusicButton() {
+                if (!musicToggle) return;
+                if (bgm.paused) {
+                    musicToggle.classList.add('paused');
+                } else {
+                    musicToggle.classList.remove('paused');
+                }
+            }
+
+            // 초기 상태: 자동 재생이 성공할 것으로 가정하고 재생 상태로 설정
+            musicToggle.classList.remove('paused');
+
+            // 오디오가 로드되었는지 확인
+            if (bgm.readyState >= 2) {
+                // 이미 로드된 경우
+                tryAutoPlay();
+            } else {
+                // 로드 대기
+                bgm.addEventListener('canplaythrough', tryAutoPlay, { once: true });
+                bgm.load(); // 수동으로 로드 시작
+            }
+
+            function tryAutoPlay() {
+                // 오디오 파일이 없는 경우 (에러 상태)
+                if (bgm.error) {
+                    if (musicToggle) {
+                        musicToggle.style.display = 'none';
+                    }
+                    return;
+                }
+
+                // 바로 자동 재생 시도
+                bgm.play().then(function () {
+                    // 자동 재생 성공: 재생 상태 유지 (이퀄라이저 표시)
+                    updateMusicButton();
+                }).catch(function (error) {
+                    // 자동 재생이 막힌 경우: 일시정지 상태로 변경 (재생 아이콘 표시)
+                    musicToggle.classList.add('paused');
+                    
+                    // 첫 사용자 입력에서 재생
+                    const tryPlay = function () {
+                        bgm.play().then(function () {
+                            updateMusicButton();
+                        }).catch(function (err) {
+                            console.warn('음악 재생 실패:', err);
+                        }).finally(function () {
+                            window.removeEventListener('click', tryPlay);
+                            window.removeEventListener('touchstart', tryPlay);
+                        });
+                    };
+                    window.addEventListener('click', tryPlay, { once: true });
+                    window.addEventListener('touchstart', tryPlay, { once: true });
+                });
+            }
+
+            // 아이콘 클릭으로 재생/일시정지 토글
+            musicToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (bgm.error) {
+                    console.warn('오디오 파일을 재생할 수 없습니다.');
+                    return;
+                }
+                if (bgm.paused) {
+                    bgm.play().then(updateMusicButton).catch(function (err) {
+                        console.warn('음악 재생 실패:', err);
+                    });
+                } else {
+                    bgm.pause();
+                    updateMusicButton();
+                }
+            });
+        });
     </script>
 
 </body>
