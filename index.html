@@ -879,14 +879,41 @@
             width: 100%;
             padding: clamp(60px, 14vw, 113px) clamp(20px, 7vw, 40px) clamp(60px, 14vw, 80px);
             background: white;
-            background-image: url(./image/bg2.png);
-            background-size: 100% 100%;
-            background-position: center;
-            background-repeat: no-repeat;
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: clamp(40px, 10vw, 70px);
+            min-height: clamp(1300px, 350vw, 1500px);
+            height: clamp(1300px, 350vw, 1500px);
+        }
+
+        .accounts-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: clamp(1300px, 350vw, 1500px);
+            background-image: url(./image/bg2.png);
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .accounts-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .account-groups-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: clamp(400px, 100vw, 600px);
+            height: clamp(400px, 100vw, 600px);
         }
 
         .account-group {
@@ -895,6 +922,10 @@
             flex-direction: column;
             gap: clamp(18px, 5vw, 28px);
             margin-top: clamp(30px, 8vw, 50px);
+        }
+
+        .account-group:first-child {
+            margin-top: 20px;
         }
 
         .account-header {
@@ -922,10 +953,16 @@
 
         .account-content {
             display: block;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 1000px;
+            opacity: 1;
+            overflow: hidden;
         }
 
         .account-content.hidden {
-            display: none;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
         }
 
         .account-row {
@@ -992,7 +1029,8 @@
             flex-direction: column;
             align-items: center;
             gap: clamp(14px, 4vw, 22px);
-            margin: clamp(44px, 11vw, 70px) 0 clamp(70px, 14vw, 110px) 0;
+            margin-top: auto;
+            margin-bottom: clamp(70px, 14vw, 110px);
             padding: 0 clamp(16px, 6vw, 28px);
             background-image: url(./image/thank.png);
             background-size: 100% 100%;
@@ -1310,7 +1348,17 @@
             .accounts-section {
                 padding: 60px 20px 60px;
                 gap: 40px;
-                background-size: 100% 100%;
+                min-height: 1600px;
+                height: 1600px;
+            }
+
+            .accounts-section::before {
+                height: 1600px;
+            }
+
+            .account-groups-wrapper {
+                min-height: 600px;
+                height: 600px;
             }
 
             .account-group {
@@ -1333,7 +1381,8 @@
                 width: 286px;
                 height: 435px;
                 gap: 14px;
-                margin: 44px 0 70px 0;
+                margin-top: auto;
+                margin-bottom: 70px;
                 padding: 0 16px;
                 background-size: 100% auto;
             }
@@ -1692,32 +1741,70 @@
         </div>
 
         <!-- ACCOUNTS -->
-        <div class="accounts-section fade-in-up delay-3">
-            <div class="text-center" style="margin-top: 20%;">
+        <div class="accounts-section">
+            <div class="text-center" style="margin-top: 25%;">
                 <div class="section-title">Send to..</div>
                 <div style="margin-top:20px; font-size:16px; font-weight:500;">마음 전하실 곳</div>
-                <div style="margin-top:5%; font-size:14px; opacity:0.5;">참석이 어려우신 분들을 위해 기재했습니다.<br>너그러운 마음으로 양해
+                <div style="margin-top:5px; font-size:14px; opacity:0.5;">참석이 어려우신 분들을 위해 기재했습니다.<br>너그러운 마음으로 양해
                     부탁드립니다.</div>
             </div>
 
-            <!-- Groom Side -->
-            <div class="account-group">
-                <div class="account-content">
-                    <div class="account-row">
-                        <div class="account-name">임석기</div>
-                        <div class="account-number">
-                            <span>신한 110-638-318975</span>
-                            <div class="copy-icon"></div>
+            <!-- Account Groups Wrapper -->
+            <div class="account-groups-wrapper">
+                <!-- Groom Side -->
+                <div class="account-group">
+                    <div class="account-header">
+                        <span>신랑측에게</span>
+                        <div class="account-arrow">^</div>
+                    </div>
+                    <div class="account-header-line"></div>
+                    <div class="account-content">
+                        <div class="account-row">
+                            <div class="account-name">임석기</div>
+                            <div class="account-number">
+                                <span>신한 110-638-318975</span>
+                                <div class="copy-icon"></div>
+                            </div>
+                        </div>
+                        <div class="account-row">
+                            <div class="account-name">이미혜</div>
+                            <div class="account-number">
+                                <span>신한 110-638-318975</span>
+                                <div class="copy-icon"></div>
+                            </div>
+                        </div>
+                        <div class="account-row">
+                            <div class="account-name">임승준</div>
+                            <div class="account-number">
+                                <span>카뱅 3333-07-4110972</span>
+                                <div class="copy-icon"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="account-row">
-                        <div class="account-name">염혜신</div>
-                        <div class="account-number">
-                            <span>신한 110-638-318975</span>
-                            <div class="copy-icon"></div>
-                        </div>
+                </div>
+
+                <!-- Bride Side -->
+                <div class="account-group">
+                    <div class="account-header">
+                        <span>신부측에게</span>
+                        <div class="account-arrow">^</div>
                     </div>
-                    <div class="account-row">
+                    <div class="account-header-line"></div>
+                    <div class="account-content">
+                        <div class="account-row">
+                            <div class="account-name">염혜신</div>
+                            <div class="account-number">
+                                <span>신한 110-638-318975</span>
+                                <div class="copy-icon"></div>
+                            </div>
+                        </div>
+                        <div class="account-row">
+                            <div class="account-name">이하은</div>
+                            <div class="account-number">
+                                <span>신한 110-638-318975</span>
+                                <div class="copy-icon"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1727,7 +1814,6 @@
             </div>
 
         </div>
-
     </div>
 
     <script>
