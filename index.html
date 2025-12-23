@@ -1393,6 +1393,39 @@
                 left: 189.23px !important;
             }
         }
+
+        /* Scroll Animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-up.delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .fade-in-up.delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-in-up.delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -1416,7 +1449,7 @@
         </div>
 
         <!-- DEAR SECTION -->
-        <div class="dear-bg">
+        <div class="dear-bg fade-in-up delay-1">
 
             <div class="dear-title">
                 <img src="./image/dear.png" alt="Dear">
@@ -1453,7 +1486,7 @@
         </div>
 
         <!-- SUMMARY -->
-        <div class="section-wedding-day">
+        <div class="section-wedding-day fade-in-up delay-2">
             <div class="datetime-info">
                 <div class="datetime-main">2026년 3월 28일 토요일 <span
                         style="font-family:'Gotham', sans-serif; font-weight:300;">|</span> 오후 2시</div>
@@ -1463,7 +1496,7 @@
         </div>
 
         <!-- CALENDAR -->
-        <div class="calendar-section">
+        <div class="calendar-section fade-in-up delay-1">
             <div class="day-header">
                 <div class="day-cell red">일</div>
                 <div class="day-cell">월</div>
@@ -1524,7 +1557,7 @@
 
 
         <!-- COUNTDOWN TIMER -->
-        <div class="countdown-section">
+        <div class="countdown-section fade-in-up">
             <div class="countdown-timer">
                 <div class="countdown-box">
                     <div class="countdown-number" id="days">00</div>
@@ -1549,7 +1582,7 @@
         </div>
 
         <!-- TIMELINE SECTION -->
-        <div data-layer="Frame 44" class="Frame44" style="width: 100%; height: clamp(600px, 190vw, 868px); position: relative; margin-bottom: 30%;">
+        <div data-layer="Frame 44" class="Frame44 fade-in-up delay-1" style="width: 100%; height: clamp(600px, 190vw, 868px); position: relative; margin-bottom: 30%;">
                 <img data-layer="img 5" class="Img5" style="width: 100%; height: clamp(600px, 190vw, 868px); left: 0px; top: 16%; position: absolute" src="./image/img2.png"">
                 <div data-layer="Rectangle 22" class="Rectangle22" style="width: 100%; height: clamp(47px, 15.4vw, 60px); left: 0px; top: 0px; position: absolute; background: white"></div>
                 <div class="timeline-content" style="position: absolute; top: 4%; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(25px, 5vw, 30px);">
@@ -1575,7 +1608,7 @@
         </div>
 
         <!-- GALLERY -->
-        <div class="gallery-container">
+        <div class="gallery-container fade-in-up delay-2">
             <div class="section-title">Gallery</div>
             <div style="font-size: 14px; margin-top: 5%;">사진을 클릭하시면 전체 화면 보기가 가능합니다.</div>
 
@@ -1627,7 +1660,7 @@
         </div>
 
         <!-- LOCATION -->
-        <div class="bg-gray-large">
+        <div class="bg-gray-large fade-in-up delay-2">
             <div class="bg-gray-large">
                 <div class="section-title">Location</div>
                 <div class="text-center">
@@ -1658,7 +1691,7 @@
         </div>
 
         <!-- ACCOUNTS -->
-        <div class="accounts-section">
+        <div class="accounts-section fade-in-up delay-3">
             <div class="text-center" style="margin-top: 20%;">
                 <div class="section-title">Send to..</div>
                 <div style="margin-top:20px; font-size:16px; font-weight:500;">마음 전하실 곳</div>
@@ -1689,7 +1722,7 @@
             </div>
 
             <!-- Footer Area -->
-            <div class="footer-section">
+            <div class="footer-section fade-in-up delay-3">
             </div>
 
         </div>
@@ -2228,6 +2261,39 @@
                 }
             });
         });
+
+        // Scroll Animation
+        function initScrollAnimation() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // 애니메이션을 적용할 요소들 선택
+            const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in');
+            animatedElements.forEach(el => observer.observe(el));
+        }
+
+        // 페이지 로드 시 애니메이션 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            initScrollAnimation();
+        });
+
+        // 이미 로드된 경우에도 실행
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initScrollAnimation);
+        } else {
+            initScrollAnimation();
+        }
     </script>
 
 </body>
