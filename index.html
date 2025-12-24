@@ -12,9 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
-    <!-- 네이버 지도 API: X-NCP-APIGW-API-KEY-ID (클라이언트 ID)를 네이버 클라우드 플랫폼에서 발급받아 입력하세요 -->
-    <script type="text/javascript"
-        src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=rsg3odfsp8&submodules=geocoder&callback=initMap"></script>
+    <!-- 네이버 지도 API는 지도 섹션이 보일 때만 로드 (성능 최적화) -->
 
     <!-- 기본 OG -->
     <meta property="og:type" content="website" />
@@ -2104,16 +2102,34 @@
         setInterval(updateCountdown, 1000);
     </script>
 
-    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=rsg3odfsp8&callback=initMap"></script>
-
     <script>
-        // 네이버 지도 초기화
-        function initMap() {
+        // 네이버 지도 지연 로딩 및 초기화 (성능 최적화)
+        let mapLoaded = false;
+        let mapInitialized = false;
+
+        // 네이버 지도 API 동적 로드
+        function loadNaverMapAPI() {
+            if (mapLoaded) return;
+            mapLoaded = true;
+
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=rsg3odfsp8&submodules=geocoder&callback=initMap';
+            script.async = true;
+            document.head.appendChild(script);
+        }
+
+        // 네이버 지도 초기화 (전역 함수로 노출 - callback용)
+        window.initMap = function() {
+            if (mapInitialized) return;
+            
             const mapDiv = document.getElementById('naver-map');
             if (!mapDiv) {
                 console.error('지도 컨테이너를 찾을 수 없습니다');
                 return;
             }
+
+            mapInitialized = true;
 
             // 주소: 경기 성남시 분당구 안양판교로 1219
             const address = '경기 성남시 분당구 안양판교로 1219';
@@ -2143,7 +2159,7 @@
                 const point = new naver.maps.LatLng(parseFloat(item.y), parseFloat(item.x));
                 createMap(mapDiv, point);
             });
-        }
+        };
 
         function createMap(mapDiv, point) {
             // 지도 생성
@@ -2176,13 +2192,24 @@
             });
         }
 
-        // 페이지 로드 후 지도 초기화
-        window.addEventListener('load', function () {
-            if (typeof naver !== 'undefined' && naver.maps) {
-                initMap();
-            } else {
-                console.error('네이버 지도 API가 로드되지 않았습니다. 클라이언트 ID를 확인하세요.');
-            }
+        // 지도 섹션이 보일 때만 지도 로드 (Intersection Observer 사용)
+        document.addEventListener('DOMContentLoaded', function () {
+            const mapSection = document.querySelector('.map-placeholder');
+            if (!mapSection) return;
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting && !mapLoaded) {
+                        // 지도 섹션이 보이면 지도 API 로드
+                        loadNaverMapAPI();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '100px' // 지도 섹션이 100px 전에 도달하면 미리 로드
+            });
+
+            observer.observe(mapSection);
         });
 
         // 지도 버튼 클릭 이벤트
