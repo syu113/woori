@@ -787,11 +787,17 @@
         }
 
         .gallery-row:nth-child(n+4) {
-            display: none;
+            display: flex;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease-out, max-height 0.5s ease-out;
         }
 
         .gallery-row:nth-child(n+4).show {
-            display: flex !important;
+            opacity: 1;
+            max-height: 1000px;
+            transition: opacity 0.5s ease-out, max-height 0.5s ease-out;
         }
 
         .gallery-item {
@@ -2276,13 +2282,20 @@
                 moreBtn.addEventListener('click', function () {
                     isExpanded = !isExpanded;
 
-                    // 3번째 row부터 보이기/숨기기
+                    // 3번째 row부터 보이기/숨기기 (애니메이션 적용)
                     galleryRows.forEach(function (row, index) {
                         if (index >= 2) {
                             if (isExpanded) {
-                                row.classList.add('show');
+                                // 각 row에 순차적으로 애니메이션 적용
+                                setTimeout(function() {
+                                    row.classList.add('show');
+                                }, (index - 2) * 100); // 0.1초씩 지연
                             } else {
-                                row.classList.remove('show');
+                                // 닫을 때는 역순으로
+                                const delay = (galleryRows.length - 1 - index) * 50;
+                                setTimeout(function() {
+                                    row.classList.remove('show');
+                                }, delay);
                             }
                         }
                     });
@@ -2506,12 +2519,7 @@
                 e.stopPropagation();
             });
 
-            // 배경 클릭 시 닫기
-            lightbox.addEventListener('click', function (e) {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
+            // 배경 클릭 시 닫기 기능 제거 (검은 배경 클릭해도 닫히지 않음)
 
             // 키보드 네비게이션
             document.addEventListener('keydown', function (e) {
