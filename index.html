@@ -1992,7 +1992,71 @@
     </div>
 
     <!-- 배경 음악 -->
-    <audio id="bgm-audio" src="./mp4/video.mp4" loop preload="auto" autoplay></audio>
+    <audio id="bgm-audio" src="./mp4/video.mp4" loop preload="auto" autoplay playsinline></audio>
+    <script>
+        // 배경 음악 자동 재생 (오디오 태그 autoplay에 의존)
+        (function() {
+            const bgm = document.getElementById('bgm-audio');
+            const musicToggle = document.querySelector('.music-toggle');
+
+            if (!bgm) return;
+
+            // 버튼 상태 반영 함수
+            function updateMusicButton() {
+                if (!musicToggle) return;
+                if (bgm.paused) {
+                    musicToggle.classList.add('paused');
+                } else {
+                    musicToggle.classList.remove('paused');
+                }
+            }
+
+            // 초기 상태: 자동 재생이 성공할 것으로 가정하고 재생 상태로 설정
+            if (musicToggle) {
+                musicToggle.classList.remove('paused');
+            }
+
+            // 오디오 파일 로드 확인
+            bgm.addEventListener('error', function (e) {
+                console.warn('배경 음악 파일을 로드할 수 없습니다. 파일 경로를 확인해주세요.');
+                if (musicToggle) {
+                    musicToggle.style.display = 'none';
+                }
+            });
+
+            // 오디오 재생 상태 확인 및 버튼 업데이트
+            function checkPlayState() {
+                updateMusicButton();
+            }
+
+            // 오디오 이벤트 리스너
+            bgm.addEventListener('play', checkPlayState);
+            bgm.addEventListener('pause', checkPlayState);
+            bgm.addEventListener('playing', checkPlayState);
+
+            // 초기 상태 확인
+            setTimeout(checkPlayState, 100);
+
+            // 아이콘 클릭으로 재생/일시정지 토글
+            if (musicToggle) {
+                musicToggle.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (bgm.error) {
+                        console.warn('오디오 파일을 재생할 수 없습니다.');
+                        return;
+                    }
+                    if (bgm.paused) {
+                        bgm.play().then(updateMusicButton).catch(function (err) {
+                            console.warn('음악 재생 실패:', err);
+                        });
+                    } else {
+                        bgm.pause();
+                        updateMusicButton();
+                    }
+                });
+            }
+        })();
+    </script>
 
     <script>
         // 결혼식 날짜: 2026년 3월 28일 오후 2시
@@ -2569,100 +2633,6 @@
             initScrollAnimation();
         }
 
-        // 배경 음악 재생 + 토글 버튼 (즉시 자동 재생)
-        (function() {
-            const bgm = document.getElementById('bgm-audio');
-            const musicToggle = document.querySelector('.music-toggle');
-
-            if (!bgm) return;
-
-            // 버튼 상태 반영 함수
-            function updateMusicButton() {
-                if (!musicToggle) return;
-                if (bgm.paused) {
-                    musicToggle.classList.add('paused');
-                } else {
-                    musicToggle.classList.remove('paused');
-                }
-            }
-
-            // 초기 상태: 자동 재생이 성공할 것으로 가정하고 재생 상태로 설정
-            if (musicToggle) {
-                musicToggle.classList.remove('paused');
-            }
-
-            // 오디오 파일 로드 확인
-            bgm.addEventListener('error', function (e) {
-                console.warn('배경 음악 파일을 로드할 수 없습니다. 파일 경로를 확인해주세요.');
-                if (musicToggle) {
-                    musicToggle.style.display = 'none';
-                }
-            });
-
-            // 즉시 자동 재생 시도 (DOMContentLoaded 대기 없음)
-            function tryAutoPlay() {
-                if (bgm.error) {
-                    if (musicToggle) {
-                        musicToggle.style.display = 'none';
-                    }
-                    return;
-                }
-
-                // 바로 자동 재생 시도
-                bgm.play().then(function () {
-                    updateMusicButton();
-                }).catch(function (error) {
-                    // 자동 재생이 막힌 경우: 일시정지 상태로 변경
-                    if (musicToggle) {
-                        musicToggle.classList.add('paused');
-                    }
-                    
-                    // 첫 사용자 입력에서 재생
-                    const tryPlay = function () {
-                        bgm.play().then(function () {
-                            updateMusicButton();
-                        }).catch(function (err) {
-                            console.warn('음악 재생 실패:', err);
-                        }).finally(function () {
-                            window.removeEventListener('click', tryPlay);
-                            window.removeEventListener('touchstart', tryPlay);
-                        });
-                    };
-                    window.addEventListener('click', tryPlay, { once: true });
-                    window.addEventListener('touchstart', tryPlay, { once: true });
-                });
-            }
-
-            // 오디오가 로드되었는지 확인하고 즉시 재생 시도
-            if (bgm.readyState >= 2) {
-                // 이미 로드된 경우 즉시 재생
-                tryAutoPlay();
-            } else {
-                // 로드 대기 (가능한 한 빠르게)
-                bgm.addEventListener('canplay', tryAutoPlay, { once: true });
-                bgm.addEventListener('loadeddata', tryAutoPlay, { once: true });
-                bgm.load();
-            }
-
-            // 아이콘 클릭으로 재생/일시정지 토글
-            if (musicToggle) {
-                musicToggle.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    if (bgm.error) {
-                        console.warn('오디오 파일을 재생할 수 없습니다.');
-                        return;
-                    }
-                    if (bgm.paused) {
-                        bgm.play().then(updateMusicButton).catch(function (err) {
-                            console.warn('음악 재생 실패:', err);
-                        });
-                    } else {
-                        bgm.pause();
-                        updateMusicButton();
-                    }
-                });
-            }
-        })();
     </script>
 
 </body>
