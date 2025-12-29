@@ -791,13 +791,13 @@
             opacity: 0;
             max-height: 0;
             overflow: hidden;
-            transition: opacity 0.5s ease-out, max-height 0.5s ease-out;
+            transition: opacity 0.3s ease-out, max-height 0.3s ease-out;
         }
 
         .gallery-row:nth-child(n+4).show {
             opacity: 1;
             max-height: 1000px;
-            transition: opacity 0.5s ease-out, max-height 0.5s ease-out;
+            transition: opacity 0.3s ease-out, max-height 0.3s ease-out;
         }
 
         .gallery-item {
@@ -1799,7 +1799,7 @@
         </div>
         <div class="timeline-content"
             style="position: absolute; top: 4%; left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(25px, 5vw, 30px);">
-            <div class="fade-in-up delay-1"
+            <div class="fade-in-up delay-2"
                 style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <div data-layer="Vector" class="Vector"
                     style="width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px); margin-bottom: 45px;">
@@ -1809,7 +1809,7 @@
                     style="width: clamp(260px, 85.3vw, 332.80px); text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word;">
                     2019년 처음,<br />서로의 이름을 부르기 시작하며</div>
             </div>
-            <div class="fade-in-up delay-2"
+            <div class="fade-in-up delay-4"
                 style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <div data-layer="Vector" class="Vector"
                     style="width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px); margin-bottom: 45px;">
@@ -1819,7 +1819,7 @@
                     style="width: clamp(260px, 85.3vw, 332.80px); text-align: center; color: #444444; font-size: 16px; font-family: Noto Serif KR; font-weight: 250; line-height: 25.60px; word-wrap: break-word;">
                     6년의 시간을 지나 당연함 속에서도<br />손을 놓지 않게 되었고,<br />서로를 선택하는 법을 배웠습니다.</div>
             </div>
-            <div class="fade-in-up delay-3"
+            <div class="fade-in-up delay-6"
                 style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <div data-layer="Vector" class="Vector"
                     style="width: clamp(7px, 2.3vw, 9px); height: clamp(7px, 2.3vw, 9px); margin-bottom: 45px;">
@@ -2289,10 +2289,10 @@
                                 // 각 row에 순차적으로 애니메이션 적용
                                 setTimeout(function() {
                                     row.classList.add('show');
-                                }, (index - 2) * 100); // 0.1초씩 지연
+                                }, (index - 2) * 50); // 0.05초씩 지연
                             } else {
                                 // 닫을 때는 역순으로
-                                const delay = (galleryRows.length - 1 - index) * 50;
+                                const delay = (galleryRows.length - 1 - index) * 30;
                                 setTimeout(function() {
                                     row.classList.remove('show');
                                 }, delay);
